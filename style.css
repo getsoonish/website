@@ -68,3 +68,67 @@ footer {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* Home page (Oct 21, 2026): hero, three highlights, two screenshots. */
+.home { max-width: 760px; }
+
+.hero { text-align: center; margin-bottom: 40px; }
+.hero img { border-radius: 20px; }
+.hero h1 { font-size: 2.6rem; margin: 14px 0 2px; }
+.hero .tagline { font-size: 1.2rem; margin: 0 0 16px; }
+.hero .lede { max-width: 520px; margin: 0 auto 24px; font-size: 1.1rem; }
+
+.button {
+  display: inline-block;
+  padding: 13px 26px;
+  border-radius: 999px;
+  background: var(--clay);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.button.soon {
+  background: transparent;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 0 40px;
+}
+.highlight {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+.highlight h2 { font-size: 1.02rem; margin: 0 0 6px; }
+.highlight p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+.shots {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 0 0 32px;
+}
+.shots figure { margin: 0; text-align: center; }
+.shots img {
+  width: 240px;
+  height: auto;
+  border-radius: 36px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(59, 51, 48, 0.12);
+}
+.shots figcaption { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
+
+.card.small { text-align: center; }
+
+@media (max-width: 640px) {
+  .highlights { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 2.2rem; }
+  .shots img { width: 200px; }
+}

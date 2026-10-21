@@ -5,29 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Soonish</title>
   <meta name="description" content="Three things a day, picked for you. A calm iPhone to-do app that picks your three for today.">
+  <meta property="og:title" content="Soonish: Three things a day">
+  <meta property="og:description" content="Get everything out of your head. Soonish picks your three for today, nudges you gently, then goes quiet.">
+  <meta property="og:image" content="https://getsoonish.co/images/today.png">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-  <header class="brand">
-    <img src="logo.svg" alt="" width="72" height="72">
-    <div>
-      <h1>Soonish</h1>
-      <p class="tagline">Three things a day. Start here.</p>
-    </div>
+<main class="home">
+  <header class="hero">
+    <img src="logo.svg" alt="" width="88" height="88">
+    <h1>Soonish</h1>
+    <p class="tagline">Three things a day. Start here.</p>
+    <p class="lede">Get everything out of your head. Soonish picks your three for today, nudges you gently until they're done, then goes quiet.</p>
+    <!-- The beta button: shown once the TestFlight public link exists. -->
+    <p class="cta"><span class="button soon">Beta opening soon</span></p>
   </header>
 
-  <div class="card">
-    <p>Get everything out of your head. Soonish picks your three for today, nudges you gently until they're done, then goes quiet. Days off never break your streak.</p>
-    <p>No account, nothing leaves your phone, and the core is free.</p>
+  <section class="highlights">
+    <div class="highlight">
+      <h2>It picks your three</h2>
+      <p>Add everything on your mind. Soonish ranks it and puts three on today, with where to start. Swap any you like.</p>
+    </div>
+    <div class="highlight">
+      <h2>Gentle nudges, then quiet</h2>
+      <p>A few friendly reminders about what's left. They stop the moment your three are done.</p>
+    </div>
+    <div class="highlight">
+      <h2>Days off never count against you</h2>
+      <p>No red numbers and no lost streaks. Steady weeks, badges and a little confetti instead.</p>
+    </div>
+  </section>
+
+  <section class="shots" aria-label="Screenshots">
+    <figure>
+      <img src="images/today.png" alt="Soonish's Today screen: three tasks with one ticked off, a Start here highlight and a progress ring at 1 of 3." width="276" height="600" loading="lazy">
+      <figcaption>Today: your three, and where to start</figcaption>
+    </figure>
+    <figure>
+      <img src="images/badge.png" alt="A Self-starter badge celebration: a purple shield with a lightning bolt." width="276" height="600" loading="lazy">
+      <figcaption>Badges that celebrate, never shame</figcaption>
+    </figure>
+  </section>
+
+  <div class="card small">
+    <p>No account. Nothing leaves your phone. The core is free.</p>
   </div>
 
-  <p>Coming soon to iPhone.</p>
-
   <footer>
-    <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a>
+    Soonish · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a>
   </footer>
 </main>
 </body>
