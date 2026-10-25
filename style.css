@@ -1,22 +1,25 @@
 :root {
-  --bg: #F7F1E6;
-  --card: #FFFBF4;
-  --ink: #3B3330;
-  --muted: #7A6E66;
-  --clay: #B8654A;
-  --sage: #7D9A7E;
-  --line: #E8DCCB;
+  /* Sunrise (Oct 25, 2026), like the app: warm sand page, white cards, apricot. */
+  --bg: #F6ECE0;
+  --card: #FFFFFF;
+  --ink: #2A211C;
+  --muted: #7A6A5C;
+  --clay: #B4521F;
+  --sage: #4F8A62;
+  --line: #EADCCB;
+  --on-clay: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #211C19;
-    --card: #2B2521;
-    --ink: #F2EAE0;
-    --muted: #B3A79C;
-    --clay: #D88A6E;
-    --sage: #9DBA9E;
-    --line: #3D3530;
+    --bg: #16121D;
+    --card: #231D2C;
+    --ink: #F5EEF2;
+    --muted: #B3A7B8;
+    --clay: #F0A06B;
+    --sage: #8CC39D;
+    --line: #3A3145;
+    --on-clay: #2B140A;
   }
 }
 
@@ -83,7 +86,7 @@ footer {
   padding: 13px 26px;
   border-radius: 999px;
   background: var(--clay);
-  color: #fff;
+  color: var(--on-clay);
   font-weight: 600;
   text-decoration: none;
 }
@@ -108,20 +111,21 @@ footer {
 .highlight h2 { font-size: 1.02rem; margin: 0 0 6px; }
 .highlight p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
 
+/* Six screenshots (Oct 25, 2026): three across, two across on a phone. */
 .shots {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  gap: 32px 20px;
   margin: 0 0 32px;
 }
 .shots figure { margin: 0; text-align: center; }
 .shots img {
-  width: 240px;
+  width: 220px;
   height: auto;
   border-radius: 36px;
   border: 1px solid var(--line);
-  box-shadow: 0 12px 30px rgba(59, 51, 48, 0.12);
+  box-shadow: 0 12px 30px rgba(42, 33, 28, 0.12);
 }
 .shots figcaption { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
 
@@ -130,7 +134,8 @@ footer {
 @media (max-width: 640px) {
   .highlights { grid-template-columns: 1fr; }
   .hero h1 { font-size: 2.2rem; }
-  .shots img { width: 200px; }
+  .shots { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
+  .shots img { width: 100%; max-width: 200px; }
 }
 
 .story {
