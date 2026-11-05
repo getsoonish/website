@@ -145,3 +145,39 @@ footer {
 .story h2 { font-size: 1.3rem; margin: 0 0 10px; }
 .story p { margin: 0 0 14px; }
 .story .signature { color: var(--muted); font-style: italic; }
+
+/* What Soonish can do (Nov 5, 2026): groups of one-line features, a screenshot beside some. */
+.features { max-width: 820px; }
+.features .tagline { font-size: 1.1rem; max-width: 560px; }
+.group {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin: 20px 0;
+}
+.group h2 { margin: 0 0 10px; font-size: 1.2rem; }
+.group-lede { margin: 0 0 10px; color: var(--muted); }
+.group ul { margin: 0; padding: 0; list-style: none; }
+.group li { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
+.group li:last-child { margin-bottom: 0; }
+.group li b { color: var(--ink); font-weight: 600; }
+.group-shot { margin: 0; }
+.group-shot img {
+  width: 180px;
+  height: auto;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 30px rgba(42, 33, 28, 0.12);
+}
+@media (max-width: 640px) {
+  .group { grid-template-columns: 1fr; padding: 18px; }
+  .group-shot { justify-self: center; }
+  .group-shot img { width: 170px; }
+}
+
+.more-link { text-align: center; margin: -16px 0 36px; font-weight: 600; }
