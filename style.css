@@ -10,24 +10,17 @@
   --on-clay: #FFFFFF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #16121D;
-    --card: #231D2C;
-    --ink: #F5EEF2;
-    --muted: #B3A7B8;
-    --clay: #F0A06B;
-    --sage: #8CC39D;
-    --line: #3A3145;
-    --on-clay: #2B140A;
-  }
-}
+/* Always light (Nov 6, 2026, owner): the dark version followed phones set to dark and read as
+   near-black for a first look. A soft sunrise glows at the top of every page instead. */
+:root { color-scheme: light; }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 140% 460px at 50% 0, #F5CBA6 0%, #F7DCC3 38%, rgba(246, 236, 224, 0) 100%) no-repeat,
+    var(--bg);
   color: var(--ink);
   font: 17px/1.6 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
 }
