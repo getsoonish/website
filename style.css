@@ -133,6 +133,20 @@ footer {
   .shots img { width: 100%; max-width: 200px; }
 }
 
+/* What Soonish leaves out (Nov 6, 2026, owner): why it's simpler, in four lines. */
+.leaves-out {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+.leaves-out h2 { font-size: 1.1rem; margin: 0 0 10px; }
+.leaves-out ul { margin: 0 0 12px; padding-left: 1.2em; }
+.leaves-out li { margin: 0 0 6px; line-height: 1.5; }
+.leaves-out p { margin: 0; color: var(--muted); }
+
 .story {
   max-width: 600px;
   margin: 8px auto 32px;
