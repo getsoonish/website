@@ -143,9 +143,19 @@ footer {
   padding: 20px 22px;
 }
 .leaves-out h2 { font-size: 1.1rem; margin: 0 0 10px; }
-.leaves-out ul { margin: 0 0 12px; padding-left: 1.2em; }
-.leaves-out li { margin: 0 0 6px; line-height: 1.5; }
+.leaves-out table { width: 100%; border-collapse: collapse; margin: 0 0 14px; line-height: 1.45; }
+.leaves-out th { text-align: left; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 0 12px 6px 0; }
+.leaves-out td { vertical-align: top; padding: 10px 12px 10px 0; border-top: 1px solid var(--line); width: 50%; }
+.leaves-out td:first-child { color: var(--muted); }
+.leaves-out td:last-child { font-weight: 600; }
 .leaves-out p { margin: 0; color: var(--muted); }
+@media (max-width: 480px) {
+  .leaves-out thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .leaves-out tr { display: block; padding: 10px 0; border-top: 1px solid var(--line); }
+  .leaves-out td { display: block; width: auto; padding: 0; border: 0; }
+  .leaves-out td:first-child::before { content: "Instead of: "; }
+  .leaves-out td:last-child { margin-top: 2px; }
+}
 
 .story {
   max-width: 600px;
