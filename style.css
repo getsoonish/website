@@ -190,3 +190,13 @@ footer {
 }
 
 .more-link { text-align: center; margin: -16px 0 36px; font-weight: 600; }
+
+/* Features: jump to a section (Nov 8, 2026, owner: a long page). Chips that wrap on a phone. */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; }
+/* A soft apricot wash (owner, option C), so the menu reads apart from the white cards below. */
+.jump a { font-size: 0.9rem; font-weight: 600; color: #8A3B16; text-decoration: none;
+  background: rgba(180, 82, 31, 0.09); border: 1px solid transparent; border-radius: 999px; padding: 6px 12px; margin: 0; }
+.jump a:hover, .jump a:focus-visible { background: rgba(180, 82, 31, 0.16); border-color: rgba(180, 82, 31, 0.25); }
+html { scroll-behavior: smooth; }
+.group { scroll-margin-top: 16px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
