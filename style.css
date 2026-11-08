@@ -200,3 +200,8 @@ footer {
 html { scroll-behavior: smooth; }
 .group { scroll-margin-top: 16px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Free / Plus tags after a feature's name (Nov 8, 2026, owner), like the Plus tag in the app. */
+.tag { display: inline-block; font-size: 0.72rem; font-weight: 700; border-radius: 999px; padding: 1px 8px; margin: 0 4px 0 2px; vertical-align: 1px; }
+.tag.free { background: #E6F0E9; color: #3E6B48; }
+.tag.plus { background: rgba(180, 82, 31, 0.12); color: #8A3B16; }
