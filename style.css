@@ -148,7 +148,10 @@ footer {
 .leaves-out td { vertical-align: top; padding: 10px 12px 10px 0; border-top: 1px solid var(--line); width: 50%; }
 .leaves-out td:first-child { color: var(--muted); }
 .leaves-out td:last-child { font-weight: 600; }
-.leaves-out p { margin: 0; color: var(--muted); }
+.leaves-out table { margin-bottom: 0; }
+/* The closing line is a sign-off, not a sixth row (Nov 9, 2026, owner). */
+.leaves-out .closing { margin: 0; padding-top: 20px; text-align: center; color: var(--clay); font-weight: 600; font-size: 1.05rem; }
+.leaves-out .closing::before { content: ""; display: block; width: 32px; height: 3px; margin: 0 auto 14px; border-radius: 2px; background: var(--clay); }
 @media (max-width: 480px) {
   .leaves-out thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .leaves-out tr { display: block; padding: 10px 0; border-top: 1px solid var(--line); }
