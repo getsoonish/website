@@ -218,3 +218,6 @@ html { scroll-behavior: smooth; }
 .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; border-radius: 999px; padding: 1px 8px; margin: 0 4px 0 2px; vertical-align: 1px; }
 .tag.free { background: #E6F0E9; color: #3E6B48; }
 .tag.plus { background: rgba(180, 82, 31, 0.12); color: #8A3B16; }
+
+/* Apple's trademark credit line (Nov 10, 2026, Apple's marketing guidelines). */
+.credits { margin: 10px 0 0; font-size: .75rem; color: var(--muted); }
