@@ -45,10 +45,19 @@ body {
   background:
     linear-gradient(180deg, var(--sky-top) 0, #E6A877 200px, var(--sky-mid) 380px, rgba(246, 236, 224, 0) 700px) no-repeat,
     var(--page);
-  overflow-x: hidden;
 }
 
-/* The sun, resting just above the sky's horizon on the right. */
+/* The sun, resting just above the sky's horizon on the right, in a box that clips its beams at
+   the page's edge (they'd otherwise make the page wider than a phone). */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 760px;
+  overflow: hidden;
+  pointer-events: none;
+}
 .sun {
   position: absolute;
   top: 70px;
@@ -90,6 +99,7 @@ h2 { font-size: 1.35rem; line-height: 1.25; margin: 32px 0 8px; font-weight: 600
 /* Top bar: the name on the left, the pages on the right. */
 .topbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
