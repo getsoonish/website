@@ -20,10 +20,21 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
-  <link rel="stylesheet" href="style.css?v=20261114b">
+  <link rel="stylesheet" href="style.css?v=20261114f">
 </head>
 <body>
-<div class="sky" aria-hidden="true"><div class="sun"></div></div>
+<div class="sky" aria-hidden="true"><svg class="sun" viewBox="-100 -100 200 200" width="190" height="190">
+    <defs>
+      <radialGradient id="sunGlow"><stop offset="0" stop-color="#FFE9B8" stop-opacity=".75"/><stop offset=".55" stop-color="#F7C987" stop-opacity=".35"/><stop offset="1" stop-color="#F2C066" stop-opacity="0"/></radialGradient>
+      <radialGradient id="sunDisc" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".55" stop-color="#FFE9B8"/><stop offset="1" stop-color="#F2C066"/></radialGradient>
+    </defs>
+    <circle r="98" fill="url(#sunGlow)"/>
+    <g class="rays" stroke="#F4C46E" stroke-width="7" stroke-linecap="round">
+      <line x1="0" y1="-56" x2="0" y2="-78"/><line x1="0" y1="56" x2="0" y2="78"/><line x1="-56" y1="0" x2="-78" y2="0"/><line x1="56" y1="0" x2="78" y2="0"/>
+      <line x1="40" y1="-40" x2="55" y2="-55"/><line x1="-40" y1="-40" x2="-55" y2="-55"/><line x1="40" y1="40" x2="55" y2="55"/><line x1="-40" y1="40" x2="-55" y2="55"/>
+    </g>
+    <circle r="42" fill="url(#sunDisc)" stroke="#FFF3D6" stroke-width="3"/>
+  </svg></div>
 <main class="home">
   <header class="topbar">
     <a class="home" href="./"><img src="logo.svg?v=20261112" alt="" width="32" height="32">Soonish</a>
@@ -39,9 +50,9 @@
       <p class="cta"><span class="button soon">Beta opening soon</span></p>
     </div>
     <figure class="phone">
-      <video data-clip muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114"
+      <video data-clip muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114d"
              aria-label="Today in Soonish: one thing to do, Call the dentist. A tap checks it off, a small light flies up, and the sun rises over the page.">
-        <source src="clips/sunrise.mp4?v=20261114" type="video/mp4">
+        <source src="clips/sunrise.mp4?v=20261114d" type="video/mp4">
       </video>
       <figcaption>Check off your one thing, and the sun rises.</figcaption>
     </figure>
@@ -52,30 +63,30 @@
     <p>A few of the moments that make Soonish feel different, straight from the app.</p>
     <div class="reel four">
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261114"
-               aria-label="The Scratchpad: typing Call the dentist friday, which floats away into This month, then Gym every mon wed fri, which lands in a new Repeating folder.">
-          <source src="clips/scratchpad.mp4?v=20261114" type="video/mp4">
+        <video data-clip data-rate="0.85" muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261114e"
+               aria-label="The Scratchpad: typing Pay bills friday on the keyboard, which floats away into This month, then Gym every mon, which lands in a new Repeating folder.">
+          <source src="clips/scratchpad.mp4?v=20261114e" type="video/mp4">
         </video>
-        <figcaption><b>Just type it.</b> &ldquo;Call the dentist friday&rdquo; floats off and lands where it belongs.</figcaption>
+        <figcaption><b>Just type it.</b> &ldquo;Pay bills friday&rdquo; floats off and lands where it belongs.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261114d"
                aria-label="Earning a Steady week badge: night falls behind the card and the sun comes up behind the badge.">
-          <source src="clips/badge.mp4?v=20261114" type="video/mp4">
+          <source src="clips/badge.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption><b>Earn badges.</b> For steady weeks, focus hours and more, and they're yours to keep.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114d"
                aria-label="Need a minute: Today fades to night, the moon rises, and four small ways to reset appear.">
-          <source src="clips/need-a-minute.mp4?v=20261114" type="video/mp4">
+          <source src="clips/need-a-minute.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption><b>Need a minute?</b> The day turns to night, and everything else is hidden.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261114d"
                aria-label="Take a day off: a beach with an umbrella opening; Tomorrow is tapped, a wave washes up the sand, and it says Tomorrow's yours.">
-          <source src="clips/day-off.mp4?v=20261114" type="video/mp4">
+          <source src="clips/day-off.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption><b>Take a day off.</b> Pick the day, the wave rolls in, and your streak is safe.</figcaption>
       </figure>
@@ -120,6 +131,6 @@
     <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
   </footer>
 </main>
-<script src="clips.js?v=20261114"></script>
+<script src="clips.js?v=20261114d"></script>
 </body>
 </html>

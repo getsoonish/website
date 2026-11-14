@@ -15,10 +15,21 @@
   <meta property="og:image" content="https://getsoonish.co/images/social.png?v=20261112">
   <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
-  <link rel="stylesheet" href="style.css?v=20261114b">
+  <link rel="stylesheet" href="style.css?v=20261114f">
 </head>
 <body>
-<div class="sky" aria-hidden="true"><div class="sun"></div></div>
+<div class="sky" aria-hidden="true"><svg class="sun" viewBox="-100 -100 200 200" width="190" height="190">
+    <defs>
+      <radialGradient id="sunGlow"><stop offset="0" stop-color="#FFE9B8" stop-opacity=".75"/><stop offset=".55" stop-color="#F7C987" stop-opacity=".35"/><stop offset="1" stop-color="#F2C066" stop-opacity="0"/></radialGradient>
+      <radialGradient id="sunDisc" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".55" stop-color="#FFE9B8"/><stop offset="1" stop-color="#F2C066"/></radialGradient>
+    </defs>
+    <circle r="98" fill="url(#sunGlow)"/>
+    <g class="rays" stroke="#F4C46E" stroke-width="7" stroke-linecap="round">
+      <line x1="0" y1="-56" x2="0" y2="-78"/><line x1="0" y1="56" x2="0" y2="78"/><line x1="-56" y1="0" x2="-78" y2="0"/><line x1="56" y1="0" x2="78" y2="0"/>
+      <line x1="40" y1="-40" x2="55" y2="-55"/><line x1="-40" y1="-40" x2="-55" y2="-55"/><line x1="40" y1="40" x2="55" y2="55"/><line x1="-40" y1="40" x2="-55" y2="55"/>
+    </g>
+    <circle r="42" fill="url(#sunDisc)" stroke="#FFF3D6" stroke-width="3"/>
+  </svg></div>
 <main class="features">
   <header class="topbar">
     <a class="home" href="./"><img src="logo.svg?v=20261112" alt="" width="32" height="32">Soonish</a>
@@ -58,9 +69,9 @@
       </ul>
     </div>
     <figure class="phone">
-      <video data-clip muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261114"
-             aria-label="Typing Call the dentist friday, which floats away and lands in This month, then Gym every mon wed fri, which lands in a new Repeating folder.">
-        <source src="clips/scratchpad.mp4?v=20261114" type="video/mp4">
+      <video data-clip data-rate="0.85" muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261114e"
+             aria-label="Typing Pay bills friday on the keyboard, which floats away and lands in This month, then Gym every mon, which lands in a new Repeating folder.">
+        <source src="clips/scratchpad.mp4?v=20261114e" type="video/mp4">
       </video>
       <figcaption>Type it. Soonish files it.</figcaption>
     </figure>
@@ -79,7 +90,7 @@
       </ul>
     </div>
     <figure class="phone">
-      <img src="images/today.png?v=20261114" alt="Today: your one thing, Call the dentist, marked Important, with Start for 5 minutes under it and the sun resting low until it's checked off." width="552" height="1200" loading="lazy">
+      <img src="images/today.png?v=20261114d" alt="Today: your one thing, Call the dentist, marked Important, with Start for 5 minutes under it and the sun resting low until it's checked off." width="552" height="1200" loading="lazy">
       <figcaption>Your one thing, and why it was picked.</figcaption>
     </figure>
   </section>
@@ -96,9 +107,9 @@
       </ul>
     </div>
     <figure class="phone">
-      <video data-clip muted loop playsinline preload="none" poster="clips/break-it-down.jpg?v=20261114"
+      <video data-clip muted loop playsinline preload="none" poster="clips/break-it-down.jpg?v=20261114d"
              aria-label="Break it down on Call the dentist: three small steps appear, Use these steps, and Today shows Step 1 of 3, which is checked off to show Step 2.">
-        <source src="clips/break-it-down.mp4?v=20261114" type="video/mp4">
+        <source src="clips/break-it-down.mp4?v=20261114d" type="video/mp4">
       </video>
       <figcaption>Break it down, then one step at a time.</figcaption>
     </figure>
@@ -116,21 +127,21 @@
     </div>
     <div class="reel">
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114d"
                aria-label="Checking off Call the dentist: a small light flies up and the sun rises.">
-          <source src="clips/sunrise.mp4?v=20261114" type="video/mp4">
+          <source src="clips/sunrise.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption>Check it off. The sun rises.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261114d"
                aria-label="A Steady week badge arrives: night falls behind the card and the sun comes up behind the badge.">
-          <source src="clips/badge.mp4?v=20261114" type="video/mp4">
+          <source src="clips/badge.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption>A Steady week, celebrated.</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/shelf.png?v=20261114" alt="Your accomplishments: a shelf of metal pin badges standing on a sunrise horizon, with outlines for the ones still to earn." width="552" height="1200" loading="lazy">
+        <img src="images/shelf.png?v=20261114d" alt="Your accomplishments: a shelf of metal pin badges standing on a sunrise horizon, with outlines for the ones still to earn." width="552" height="1200" loading="lazy">
         <figcaption>Your accomplishments, yours to keep.</figcaption>
       </figure>
     </div>
@@ -147,16 +158,19 @@
     </div>
     <div class="reel">
       <figure class="phone">
-        <img src="images/progress.png?v=20261114" alt="Progress: 69 things done since you started, your weeks as a skyline with your typical week as a dashed line." width="552" height="1200" loading="lazy">
+        <img src="images/progress.png?v=20261114d" alt="Progress: 69 things done since you started, your weeks as a skyline with your typical week as a dashed line." width="552" height="1200" loading="lazy">
         <figcaption>Progress: numbers that only go up.</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/done.png?v=20261114" alt="Done: this week's days as a skyline, 17 things done so far, and each day's finished tasks below." width="552" height="1200" loading="lazy">
+        <img src="images/done.png?v=20261114d" alt="Done: this week's days as a skyline, 17 things done so far, and each day's finished tasks below." width="552" height="1200" loading="lazy">
         <figcaption>Done: everything you finished.</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/patterns.png?v=20261114" alt="Your patterns: What Soonish noticed, You're a morning finisher, with a picture of the day from 6 AM to 10 PM and the sun at noon." width="552" height="1200" loading="lazy">
-        <figcaption>Your patterns, with Plus.</figcaption>
+        <video data-clip data-rate="0.85" muted loop playsinline preload="none" poster="clips/patterns.jpg?v=20261114d"
+               aria-label="Your patterns: tapping See why opens You're a morning finisher, with an hour-by-hour chart; tapping bars shows each hour. Then Your longest run opens, and tapping a sun shows that day.">
+          <source src="clips/patterns.mp4?v=20261114d" type="video/mp4">
+        </video>
+        <figcaption>Your patterns, with Plus. Tap one to see why.</figcaption>
       </figure>
     </div>
   </section>
@@ -173,8 +187,11 @@
       </ul>
     </div>
     <figure class="phone">
-      <img src="images/scratchpad.png?v=20261114" alt="The Scratchpad: one line to add anything, the next thing up, and everything else sorted into Tomorrow, This month, No date and Kept thoughts." width="552" height="1200" loading="lazy">
-      <figcaption>Sorted by day, without you sorting.</figcaption>
+      <video data-clip data-rate="0.85" muted loop playsinline preload="none" poster="clips/dates.jpg?v=20261114e"
+             aria-label="Typing dentist tue at noon: it floats off into This month, and opening the folder shows Dentist with a Tue, 12pm chip, Dentist checkup on Fri and Rent due Nov 30.">
+        <source src="clips/dates.mp4?v=20261114e" type="video/mp4">
+      </video>
+      <figcaption>Type the day and time. Soonish takes it from there.</figcaption>
     </figure>
   </section>
 
@@ -191,23 +208,23 @@
     </div>
     <div class="reel">
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114d"
                aria-label="Need a minute: Today fades to night, the moon rises, and four small ways to reset appear.">
-          <source src="clips/need-a-minute.mp4?v=20261114" type="video/mp4">
+          <source src="clips/need-a-minute.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption>Need a minute: the day turns to night.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/breaths.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/breaths.jpg?v=20261114d"
                aria-label="Three slow breaths: the moon rises over a calm night lake as the words say Breathe in, Hold, Breathe out.">
-          <source src="clips/breaths.mp4?v=20261114" type="video/mp4">
+          <source src="clips/breaths.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption>Three slow breaths with the moon.</figcaption>
       </figure>
       <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261114"
+        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261114d"
                aria-label="Take a day off: a beach with an umbrella opening; Tomorrow is tapped, a wave washes up the sand, and it says Tomorrow's yours.">
-          <source src="clips/day-off.mp4?v=20261114" type="video/mp4">
+          <source src="clips/day-off.mp4?v=20261114d" type="video/mp4">
         </video>
         <figcaption>Take a day off. Your streak is safe.</figcaption>
       </figure>
@@ -267,19 +284,19 @@
     </div>
     <div class="reel four">
       <figure class="phone">
-        <img src="images/theme-sunrise.png?v=20261114" alt="Today in the Sunrise theme: a warm apricot sky." width="552" height="1200" loading="lazy">
+        <img src="images/theme-sunrise.png?v=20261114d" alt="Today in the Sunrise theme: a warm apricot sky." width="552" height="1200" loading="lazy">
         <figcaption>Sunrise (free)</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/theme-seaglass.png?v=20261114" alt="Today in the Sea glass theme: a soft green sky." width="552" height="1200" loading="lazy">
+        <img src="images/theme-seaglass.png?v=20261114d" alt="Today in the Sea glass theme: a soft green sky." width="552" height="1200" loading="lazy">
         <figcaption>Sea glass</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/theme-aurora.png?v=20261114" alt="Today in the Aurora theme: a dark sky with green and violet northern lights." width="552" height="1200" loading="lazy">
+        <img src="images/theme-aurora.png?v=20261114d" alt="Today in the Aurora theme: a dark sky with green and violet northern lights." width="552" height="1200" loading="lazy">
         <figcaption>Aurora</figcaption>
       </figure>
       <figure class="phone">
-        <img src="images/theme-pearl.png?v=20261114" alt="Today in the Pearl theme: a pale pearly sky." width="552" height="1200" loading="lazy">
+        <img src="images/theme-pearl.png?v=20261114d" alt="Today in the Pearl theme: a pale pearly sky." width="552" height="1200" loading="lazy">
         <figcaption>Pearl</figcaption>
       </figure>
     </div>
@@ -294,6 +311,6 @@
     <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
   </footer>
 </main>
-<script src="clips.js?v=20261114"></script>
+<script src="clips.js?v=20261114d"></script>
 </body>
 </html>

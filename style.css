@@ -42,13 +42,15 @@ body {
   margin: 0;
   color: var(--ink);
   font: 17px/1.6 var(--body);
+  /* Today's daytime sky, sampled from the app (owner, Nov 14, 2026: the dawn sky read too dark). */
   background:
-    linear-gradient(180deg, var(--sky-top) 0, #E6A877 200px, var(--sky-mid) 380px, rgba(246, 236, 224, 0) 700px) no-repeat,
+    linear-gradient(180deg, #E8CCA9 0, #EDD7BB 120px, #F1E1CC 250px, #F4E8D8 380px, rgba(246, 236, 224, 0) 560px) no-repeat,
     var(--page);
 }
 
-/* The sun, resting just above the sky's horizon on the right, in a box that clips its beams at
-   the page's edge (they'd otherwise make the page wider than a phone). */
+/* The sun, like the app's (owner, Nov 14, 2026: more like a sun, but not a real one): a gold disc
+   with eight short rounded rays over a soft glow, in a box that clips at the page's edge. It rises
+   into place as the page opens and its rays turn slowly; still with Reduce Motion. */
 .sky {
   position: absolute;
   top: 0;
@@ -60,25 +62,21 @@ body {
 }
 .sun {
   position: absolute;
-  top: 70px;
-  right: max(6vw, 24px);
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 40%, var(--sun-light) 0%, #FFE9B8 40%, var(--sun-gold) 100%);
-  box-shadow: 0 0 0 10px rgba(255, 233, 184, 0.28), 0 0 70px 30px rgba(242, 192, 102, 0.45);
-  pointer-events: none;
+  top: 78px;
+  right: max(1.5vw, 16px);
+  width: 190px;
+  height: 190px;
   z-index: 0;
+  animation: sunrise 2.4s cubic-bezier(.2,.8,.2,1) both;
 }
-.sun::before {
-  /* A few long, faint beams, like the app's sun. */
-  content: "";
-  position: absolute;
-  inset: -260px;
-  background: repeating-conic-gradient(from 8deg, rgba(255, 233, 184, 0.28) 0deg 2deg, transparent 2deg 30deg);
-  -webkit-mask: radial-gradient(circle, transparent 70px, #000 90px, transparent 320px);
-  mask: radial-gradient(circle, transparent 70px, #000 90px, transparent 320px);
+.sun .rays { transform-origin: center; transform-box: fill-box; animation: beams 60s linear infinite; }
+@keyframes sunrise {
+  from { transform: translateY(130px) scale(.85); opacity: 0; }
+  55% { opacity: 1; }
+  to { transform: none; opacity: 1; }
 }
+@keyframes beams { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .sun, .sun .rays { animation: none; } }
 
 main {
   position: relative;
@@ -254,7 +252,7 @@ footer {
 /* ---------- Narrow screens ---------- */
 
 @media (max-width: 760px) {
-  .sun { width: 84px; height: 84px; top: 64px; }
+  .sun { width: 130px; height: 130px; top: 50px; }
   .hero { grid-template-columns: 1fr; gap: 32px; margin-bottom: 56px; }
   .hero h1 { font-size: 2.8rem; }
   .hero .phone video { max-width: 250px; }
