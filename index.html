@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Soonish</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Soonish: Start with one. An ADHD-friendly to-do app for iPhone</title>
+  <link rel="canonical" href="https://getsoonish.co/">
   <meta name="description" content="An ADHD-friendly iPhone to-do app. Soonish picks one thing for today, goes easy on hard days, and grows with you when you're ready.">
   <!-- Link previews (Messages, Slack, social): a wide 1200×630 card, not the tall screenshot. -->
   <meta property="og:type" content="website">
@@ -12,40 +13,76 @@
   <meta property="og:site_name" content="Soonish">
   <meta property="og:title" content="Soonish: Start with one">
   <meta property="og:description" content="A to-do app for ADHD minds. It picks one thing for today, nudges you gently, then goes quiet.">
-  <meta property="og:image" content="https://getsoonish.co/images/social.png">
+  <meta property="og:image" content="https://getsoonish.co/images/social.png?v=20261112">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Soonish: Start with one. Picked for you. Gentle nudges, then quiet.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=20261110">
+  <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
+  <link rel="stylesheet" href="style.css?v=20261114">
 </head>
 <body>
+<div class="sun" aria-hidden="true"></div>
 <main class="home">
-  <header class="hero">
-    <img src="logo.svg" alt="" width="88" height="88">
-    <h1>Soonish</h1>
-    <p class="tagline">Start with one.</p>
-    <p class="lede"><b>A to-do app for ADHD minds.</b> Get everything out of your head, and Soonish decides where to start: one thing for today. It nudges you gently until it's done, then goes quiet. Ready for more? Grow to two or three a day.</p>
-    <!-- The beta button: shown once the TestFlight public link exists. -->
-    <p class="cta"><span class="button soon">Beta opening soon</span></p>
+  <header class="topbar">
+    <a class="home" href="./"><img src="logo.svg?v=20261112" alt="" width="32" height="32">Soonish</a>
+    <span class="links"><a href="features.html">Features</a><a href="support.html">Support</a></span>
   </header>
 
-  <section class="highlights">
-    <div class="highlight">
-      <h2>No more deciding where to start</h2>
-      <p>Add everything on your mind. Soonish ranks it and puts one thing on today, with a short reason like Due today. Swap it for something else anytime. Too big to start? Start with just 5 minutes, or, on iPhone models with Apple Intelligence, let Break it down suggest three tiny first steps.</p>
+  <section class="hero">
+    <div>
+      <h1>Soonish</h1>
+      <p class="tagline">Start with one.</p>
+      <p class="lede"><b>A to-do app for ADHD minds.</b> Get everything out of your head, and Soonish decides where to start: one thing for today. Check it off and the sun rises. It nudges you gently until it's done, then goes quiet. Ready for more? Grow to two or three a day.</p>
+      <!-- The beta button: shown once the TestFlight public link exists. -->
+      <p class="cta"><span class="button soon">Beta opening soon</span></p>
     </div>
-    <div class="highlight">
-      <h2>Nudges that know when to stop</h2>
-      <p>A few friendly reminders about what's left. They stop the moment your goal is done.</p>
-    </div>
-    <div class="highlight">
-      <h2>Bad days don't break anything</h2>
-      <p>No red numbers and no lost streaks. Steady weeks, badges and a little celebration instead.</p>
+    <figure class="phone">
+      <video data-clip muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114"
+             aria-label="Today in Soonish: one thing to do, Call the dentist. A tap checks it off, a small light flies up, and the sun rises over the page.">
+        <source src="clips/sunrise.mp4?v=20261114" type="video/mp4">
+      </video>
+      <figcaption>Check off your one thing, and the sun rises.</figcaption>
+    </figure>
+  </section>
+
+  <section class="moments">
+    <h2>It looks simple. It does a lot.</h2>
+    <p>A few of the moments that make Soonish feel different, straight from the app.</p>
+    <div class="reel four">
+      <figure class="phone">
+        <video data-clip muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261114"
+               aria-label="The Scratchpad: typing Call the dentist friday, which floats away into This month, then Gym every mon wed fri, which lands in a new Repeating folder.">
+          <source src="clips/scratchpad.mp4?v=20261114" type="video/mp4">
+        </video>
+        <figcaption><b>Just type it.</b> &ldquo;Call the dentist friday&rdquo; floats off and lands where it belongs.</figcaption>
+      </figure>
+      <figure class="phone">
+        <video data-clip muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261114"
+               aria-label="Earning a Steady week badge: night falls behind the card and the sun comes up behind the badge.">
+          <source src="clips/badge.mp4?v=20261114" type="video/mp4">
+        </video>
+        <figcaption><b>Earn badges.</b> For steady weeks, focus hours and more, and they're yours to keep.</figcaption>
+      </figure>
+      <figure class="phone">
+        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114"
+               aria-label="Need a minute: Today fades to night, the moon rises, and four small ways to reset appear.">
+          <source src="clips/need-a-minute.mp4?v=20261114" type="video/mp4">
+        </video>
+        <figcaption><b>Need a minute?</b> The day turns to night, and everything else is hidden.</figcaption>
+      </figure>
+      <figure class="phone">
+        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261114"
+               aria-label="Take a day off: a beach with an umbrella opening; Tomorrow is tapped, a wave washes up the sand, and it says Tomorrow's yours.">
+          <source src="clips/day-off.mp4?v=20261114" type="video/mp4">
+        </video>
+        <figcaption><b>Take a day off.</b> Pick the day, the wave rolls in, and your streak is safe.</figcaption>
+      </figure>
     </div>
   </section>
+
+  <p class="more-link"><a href="features.html">See everything Soonish can do</a></p>
 
   <section class="story">
     <h2>Why I made Soonish</h2>
@@ -74,35 +111,6 @@
     <p class="closing">Less to manage, so more gets done.</p>
   </section>
 
-  <p class="more-link"><a href="features.html">See everything Soonish can do</a></p>
-
-  <section class="shots" aria-label="Screenshots">
-    <figure>
-      <img src="images/today.png?v=20261106b" alt="Soonish's Today screen: your one thing done at 8:52 AM in a green card, the ring at 1 of 1 with two more, a line cheering two more things done from your list, Keep going, this week's dots, and your day's reminders and calendar below." width="276" height="600" loading="lazy">
-      <figcaption>Today: your one thing, picked for you</figcaption>
-    </figure>
-    <figure>
-      <img src="images/scratchpad.png?v=20261106b" alt="The Scratchpad: one line to add anything, one thing up next, and everything else folded into Tomorrow, This month, No date and Repeating, each showing its first task." width="276" height="600" loading="lazy">
-      <figcaption>Scratchpad: get it out of your head</figcaption>
-    </figure>
-    <figure>
-      <img src="images/done.png?v=20261106b" alt="The Done tab: 17 things done so far this week, the week's dots, today opened to its three finished tasks, and earlier days folded." width="276" height="600" loading="lazy">
-      <figcaption>Done: everything you finished</figcaption>
-    </figure>
-    <figure>
-      <img src="images/progress.png?v=20261106b" alt="The Progress tab: 69 things done since you started, the latest badge (Above and beyond), and notes about when you get things done." width="276" height="600" loading="lazy">
-      <figcaption>Progress: numbers that only go up</figcaption>
-    </figure>
-    <figure>
-      <img src="images/need-a-minute.png?v=20261106" alt="Need a minute: a calm dark screen offering a 2-minute reset, a 15-minute micro-bite, or clearing your head." width="276" height="600" loading="lazy">
-      <figcaption>Need a minute: for when it's all too much</figcaption>
-    </figure>
-    <figure>
-      <img src="images/badge.png?v=20261106" alt="A Steady week badge celebration: a silver-rimmed green pin with a rising sun, and "Something done every day this week."" width="276" height="600" loading="lazy">
-      <figcaption>Badges that celebrate, never shame</figcaption>
-    </figure>
-  </section>
-
   <div class="card small">
     <p>No account. Nothing is ever sent to us. Free, with no limits. Plus is an optional extra.</p>
   </div>
@@ -112,5 +120,6 @@
     <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
   </footer>
 </main>
+<script src="clips.js?v=20261114"></script>
 </body>
 </html>
