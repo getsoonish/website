@@ -262,6 +262,7 @@ footer {
 .group .reel { margin-top: 32px; }
 .reel.four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
 .reel.five { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.reel-note { margin: 0; text-align: center; color: var(--muted); }
 /* Two phones keep the size they'd have in a row of three, centered. */
 .reel.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: calc((100% - 56px) * 2 / 3 + 28px); margin-left: auto; margin-right: auto; }
 
