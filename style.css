@@ -261,6 +261,7 @@ footer {
 /* Several phones under a group's words. */
 .group .reel { margin-top: 32px; }
 .reel.four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.reel.five { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
 /* Two phones keep the size they'd have in a row of three, centered. */
 .reel.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: calc((100% - 56px) * 2 / 3 + 28px); margin-left: auto; margin-right: auto; }
 
@@ -280,7 +281,7 @@ footer {
   .group.flip .group-text { order: 0; }
   .group > .phone video, .group > .phone img { max-width: 240px; }
   /* Rows of phones slide sideways instead of stacking into a long column. */
-  .reel, .reel.four, .reel.two {
+  .reel, .reel.four, .reel.five, .reel.two {
     display: flex;
     max-width: none;
     gap: 18px;
