@@ -7,150 +7,603 @@
   <title>Soonish: Start with one. An ADHD-friendly to-do app for iPhone</title>
   <link rel="canonical" href="https://getsoonish.co/">
   <meta name="description" content="An ADHD-friendly iPhone to-do app. Soonish picks one thing for today, goes easy on hard days, and grows with you when you're ready.">
-  <!-- Link previews (Messages, Slack, social): a wide 1200×630 card, not the tall screenshot. -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://getsoonish.co/">
   <meta property="og:site_name" content="Soonish">
   <meta property="og:title" content="Soonish: Start with one">
   <meta property="og:description" content="A to-do app for ADHD minds. It picks one thing for today, nudges you gently, then goes quiet.">
-  <meta property="og:image" content="https://getsoonish.co/images/social.png?v=20261112">
+  <meta property="og:image" content="https://getsoonish.co/images/social.png?v=20261122b">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Soonish: Start with one. Picked for you. Gentle nudges, then quiet.">
+  <meta property="og:image:alt" content="Soonish: Start with one. The app icon, and Today with the sun risen over the morning sky.">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
-  <link rel="stylesheet" href="style.css?v=20261115c">
+  <link rel="icon" href="favicon.png?v=20261122b" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261122b">
+<style>
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Heading.ttf") format("truetype"); font-weight: 400 650; font-display: swap; }
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Display.ttf") format("truetype"); font-weight: 651 900; font-display: swap; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden]:not([hidden="until-found" i]) { display: none !important; }
+</style>
 </head>
 <body>
-<div class="sky" aria-hidden="true"><svg class="sun" viewBox="-100 -100 200 200" width="190" height="190">
-    <defs>
-      <radialGradient id="sunGlow"><stop offset="0" stop-color="#FFE9B8" stop-opacity=".75"/><stop offset=".55" stop-color="#F7C987" stop-opacity=".35"/><stop offset="1" stop-color="#F2C066" stop-opacity="0"/></radialGradient>
-      <radialGradient id="sunDisc" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".55" stop-color="#FFE9B8"/><stop offset="1" stop-color="#F2C066"/></radialGradient>
-    </defs>
-    <circle r="98" fill="url(#sunGlow)"/>
-    <g class="rays" stroke="#F4C46E" stroke-width="7" stroke-linecap="round">
-      <line x1="0" y1="-56" x2="0" y2="-78"/><line x1="0" y1="56" x2="0" y2="78"/><line x1="-56" y1="0" x2="-78" y2="0"/><line x1="56" y1="0" x2="78" y2="0"/>
-      <line x1="40" y1="-40" x2="55" y2="-55"/><line x1="-40" y1="-40" x2="-55" y2="-55"/><line x1="40" y1="40" x2="55" y2="55"/><line x1="-40" y1="40" x2="-55" y2="55"/>
-    </g>
-    <circle r="42" fill="url(#sunDisc)" stroke="#FFF3D6" stroke-width="3"/>
-  </svg></div>
-<main class="home">
-  <header class="topbar">
-    <a class="home" href="./"><img src="logo.svg?v=20261112" alt="" width="32" height="32">Soonish</a>
-    <span class="links"><a href="features.html">Features</a><a href="support.html">Support</a></span>
-  </header>
+<style>
+/* Layout: one day with Soonish. The hero is the app's Today at 9:41 AM: the sky, the dotted sun
+   path and "Start with one." as your one thing, with a circle to check it off and watch the sun
+   rise, rays and all. Steven's story comes right after, then the day in time-stamped sections
+   (a ruled margin like the Scratchpad's): morning, midday, a night for Need a minute, a beach for a
+   day off, dusk for wins, evening for Plus, night for what Soonish leaves out, dawn for the sign-up.
+   One look on purpose (the day is the theme), so no dark-mode remap. */
+:root {
+  --ink: #2A2018;
+  --ink2: #655850;
+  --accent: #9A4218;
+  --apricot: #D4692F;
+  --gold: #F2C066;
+  --page: #F6ECE0;
+  --margin: rgba(196, 90, 70, 0.28);
+  --night: #17121D;
+  --display: "Bricolage Soonish", "Bricolage Grotesque", "Avenir Next", ui-rounded, system-ui, sans-serif;
+  --text: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid #2A2018; outline-offset: 3px; }
+.night :focus-visible, .evening :focus-visible, .after :focus-visible { outline-color: var(--gold); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 
-  <section class="hero">
-    <div>
-      <h1>Soonish</h1>
-      <p class="tagline">Start with one.</p>
-      <p class="lede"><b>A to-do app for ADHD minds.</b> Get everything out of your head, and Soonish decides where to start: one thing for today. Check it off and the sun rises. It nudges you gently until it’s done, then goes quiet. Ready for more? Grow to two or three a day.</p>
-      <!-- Launch sign-up, held in Kit (Nov 14, 2026). -->
-      <form class="signup" action="https://app.kit.com/forms/10190717/subscriptions" method="post">
-        <label for="signup-email">Coming January 1. Get an email when Soonish is out.</label>
-        <div class="signup-row">
-          <input id="signup-email" type="email" name="email_address" placeholder="you@example.com" autocomplete="email" required>
-          <button class="button" type="submit">Notify me</button>
-        </div>
+/* ---------- Hero: Today at 9:41 ---------- */
+.hero { position: relative; margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+  background: linear-gradient(180deg, #E6B98C 0%, #EBCBA6 16%, #F1DCC3 30%, var(--page) 46%); }
+.hero.warm::after { content: ""; position: absolute; inset: 0 0 40% 0; pointer-events: none; background: radial-gradient(70% 90% at var(--sx, 30%) 40%, rgba(255, 214, 150, .55), transparent 70%); animation: warm 2.6s ease-out forwards; }
+@keyframes warm { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+.topbar { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; padding-block: 18px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 7.5px; display: block; box-shadow: 0 1px 2px rgba(80, 40, 10, .18); }
+.topbar nav { display: flex; gap: 22px; font-weight: 600; }
+.topbar nav a { color: var(--ink); text-decoration: none; opacity: .85; display: inline-block; padding-block: 11px; }
+
+.skyband { position: relative; height: clamp(210px, 28vw, 320px); color: var(--ink); max-width: 1180px; margin: 0 auto; clip-path: inset(-600px -300px 0 -300px); }
+.arcsvg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.lab { position: absolute; bottom: 10px; font: 600 13px var(--text); color: var(--ink2); }
+.l6 { left: max(20px, env(safe-area-inset-left, 0px)); } .l10 { right: max(20px, env(safe-area-inset-right, 0px)); }
+.horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .22; }
+#sun { position: absolute; left: 0; top: 0; width: 170px; height: 170px; margin: -85px 0 0 -85px; will-change: transform; }
+#sun svg { position: relative; }
+#sun .halo { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(255, 233, 184, .9), rgba(247, 201, 135, .3) 45%, transparent 70%); transform: scale(1); }
+#sun.swell .halo { animation: swell 2.4s ease-out; }
+@keyframes swell { 0% { transform: scale(1); } 22% { transform: scale(2.1); opacity: 1; } 100% { transform: scale(1); } }
+
+.kicker { margin: 30px 0 6px; font-size: 15px; color: var(--ink2); }
+.onething { position: relative; display: flex; gap: clamp(14px, 2vw, 26px); align-items: flex-start; }
+.check { position: relative; flex: none; width: clamp(56px, 6.4vw, 84px); height: clamp(56px, 6.4vw, 84px); margin-top: clamp(4px, 1.3vw, 18px); border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+  border: 2.5px solid #9A6410; background: radial-gradient(circle at 45% 40%, #FFFBF0, #F6EAD3); transition: background .35s, border-color .35s, transform .2s; }
+.check::before { content: ""; position: absolute; inset: -9px; border-radius: 50%; border: 2px solid rgba(214, 150, 50, .6); animation: invite 2.4s ease-out infinite; pointer-events: none; }
+.check[aria-pressed="true"]::before { animation: none; opacity: 0; }
+@keyframes invite { 0% { transform: scale(.88); opacity: .9; } 70% { transform: scale(1.25); opacity: 0; } 100% { opacity: 0; } }
+.check svg { opacity: 0; transform: scale(.5); transition: opacity .25s .1s, transform .35s .1s cubic-bezier(.3,1.6,.5,1); width: 62%; height: 62%; }
+.check[aria-pressed="true"] { border-color: #E3A84A; background: radial-gradient(circle at 45% 38%, #FFF8E2, #FFE9B8 55%, #F2C066); }
+.check[aria-pressed="true"] svg { opacity: 1; transform: none; }
+.check:active { transform: scale(.94); }
+.check:focus-visible { outline: 3px solid #2A2018; outline-offset: 6px; }
+.ripple { position: absolute; inset: 0; border-radius: 50%; border: 3px solid #F2C066; pointer-events: none; animation: ripple .7s ease-out forwards; }
+@keyframes ripple { from { transform: scale(1); opacity: 1; } to { transform: scale(1.9); opacity: 0; } }
+.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(54px, 10vw, 136px); line-height: .92; letter-spacing: -0.035em; margin: 0; text-wrap: balance; color: var(--ink); }
+.status { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; min-height: 1.6em; color: var(--ink2); font-size: 16px; }
+.prompt { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--accent); }
+.prompt svg { flex: none; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; padding-block: 34px 56px; }
+.hero .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 36ch; margin: 0; }
+.hero .lede b { color: var(--ink); font-weight: 650; }
+
+/* The sunrise moment, over the whole page like the app's: long beams, rings, then they fade. */
+.burst { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
+.burst .beams { position: absolute; width: 2400px; height: 2400px; margin: -1200px 0 0 -1200px; border-radius: 50%;
+  background: repeating-conic-gradient(from 6deg, rgba(255, 226, 160, .55) 0deg 2.2deg, transparent 2.2deg 15deg);
+  -webkit-mask: radial-gradient(circle, transparent 3%, #000 5%, rgba(0,0,0,.5) 30%, transparent 55%); mask: radial-gradient(circle, transparent 3%, #000 5%, rgba(0,0,0,.5) 30%, transparent 55%);
+  animation: beams 2.6s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes beams { 0% { opacity: 0; transform: scale(.25) rotate(0deg); } 18% { opacity: 1; } 55% { opacity: .85; } 100% { opacity: 0; transform: scale(1) rotate(9deg); } }
+.burst .ring { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 2px solid rgba(255, 220, 150, .9); box-shadow: 0 0 22px rgba(255, 210, 140, .6); animation: ring 1.8s ease-out forwards; }
+.burst .ring.two { animation-delay: .25s; opacity: 0; }
+@keyframes ring { 0% { transform: scale(.6); opacity: 1; } 100% { transform: scale(9); opacity: 0; } }
+.mote { position: fixed; z-index: 41; width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, #FFF8E2, #FFE9B8 50%, rgba(242, 192, 102, 0)); box-shadow: 0 0 20px 7px rgba(255, 220, 150, .75); }
+
+.signup { display: grid; gap: 8px; max-width: 460px; }
+.signup label { font-weight: 650; }
+.signup .row { display: flex; gap: 8px; }
+.signup input { flex: 1; min-width: 0; font: inherit; padding: 13px 16px; border-radius: 999px; border: 1px solid rgba(42, 32, 24, .14); background: rgba(255, 252, 246, .9); color: var(--ink); }
+.signup input:focus-visible, .btn:focus-visible { outline: 3px solid #2A2018; outline-offset: 2px; }
+.btn { font: inherit; font-weight: 700; border: 0; border-radius: 999px; padding: 13px 22px; background: var(--apricot); color: #2C1406; cursor: pointer; }
+.signup .fine { font-size: 13px; color: var(--ink2); margin: 0; }
+.signup .fine a { color: inherit; }
+
+/* ---------- The story, right under the hero ---------- */
+.why { padding-block: 30px 40px; }
+.why-in { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: start; border-top: 1px solid rgba(101, 88, 80, .2); padding-top: 54px; }
+.why h2 { font-family: var(--display); font-weight: 600; font-size: 15px; color: #9A4218; margin: 0 0 14px; letter-spacing: .01em; }
+.pull { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.02em; margin: 0; color: var(--ink); text-wrap: balance; }
+.why p { color: var(--ink2); margin: 0 0 14px; max-width: 60ch; }
+.why details summary { cursor: pointer; font-weight: 700; color: var(--accent); list-style: none; display: inline-flex; gap: 6px; align-items: center; margin-top: 4px; min-height: 44px; }
+.why details summary::-webkit-details-marker { display: none; }
+.why details summary::after { content: "↓"; transition: transform .2s; }
+.why details[open] summary::after { transform: rotate(180deg); }
+.why details[open] summary { margin-bottom: 14px; }
+
+/* ---------- Phones ---------- */
+.phone { margin: 0; }
+.phone video, .phone img { width: 100%; aspect-ratio: 552 / 1200; object-fit: cover; border-radius: 34px; border: 7px solid #221A16; box-shadow: 0 30px 60px -22px rgba(60, 35, 15, .45); background: #221A16; }
+.phone figcaption { font-size: 14px; color: var(--ink2); margin-top: 12px; text-align: center; }
+
+/* ---------- The day: ruled margin with times ---------- */
+.hour { position: relative; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 0 40px; padding-block: 70px; }
+.hour::before { content: ""; position: absolute; left: 140px; top: 0; bottom: 0; border-left: 1.5px solid var(--margin); }
+.time { font-family: var(--display); font-weight: 600; font-size: 15px; color: #9A4218; text-align: right; padding: 12px 18px 0 0; line-height: 1.25; }
+.hour h2 { font-family: var(--display); font-weight: 800; font-size: clamp(36px, 5vw, 64px); line-height: .98; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: balance; }
+.hour p { max-width: 52ch; color: var(--ink2); margin: 0 0 14px; }
+.hour p b { color: var(--ink); }
+.split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 40px; align-items: center; }
+.split .phone { width: 100%; max-width: 290px; justify-self: center; }
+.typed { font-family: var(--display); font-weight: 600; font-size: clamp(22px, 2.6vw, 30px); color: var(--ink); line-height: 1.25; margin: 22px 0; }
+.typed span { display: block; }
+.typed em { font-style: normal; color: #3D6FA8; }
+
+.night { color: #F3E8DC; background: radial-gradient(60% 50% at 70% 64%, rgba(255, 238, 205, .16), transparent 70%), linear-gradient(180deg, var(--page) 0%, #5A4560 9%, #2A2238 22%, var(--night) 55%, #1A1724 100%); }
+.night .hour::before, .after .hour::before { border-color: rgba(255, 236, 214, .16); }
+.night .time, .after .time { color: #E8B48C; }
+.night .hour p { color: #CFC0C4; }
+.night .hour p b { color: #FFF3E0; }
+.moon { width: 72px; height: 72px; border-radius: 50%; background: radial-gradient(circle at 30% 34%, rgba(146,136,118,.3) 0 4%, rgba(146,136,118,.14) 8%, transparent 12%), radial-gradient(circle at 57% 27%, rgba(146,136,118,.22) 0 3%, transparent 7%), radial-gradient(24% 17% at 63% 61%, rgba(138,128,110,.45), transparent), radial-gradient(15% 12% at 35% 67%, rgba(138,128,110,.38), transparent), radial-gradient(circle at 75% 43%, rgba(146,136,118,.2) 0 2%, transparent 6%), radial-gradient(circle at 45% 47%, rgba(156,146,126,.16) 0 3%, transparent 8%), radial-gradient(circle at 38% 36%, #FFFBF0, #EEE5D0 55%, #CBBFA3); box-shadow: inset -10px -8px 16px rgba(40, 30, 60, .38), 0 0 60px 18px rgba(255, 240, 210, .18); margin-bottom: 26px; }
+.night .phone video { border-color: #0D0B12; }
+
+.beach { background: linear-gradient(180deg, #1A1724 0, #E9B48A 70px, #F6DDBA 150px, #A9D2CD 151px, #7FB3B5 205px, #9CC3BE 214px, #EED9B6 215px, #F4E6CE 55%, var(--page) 100%); }
+.beach .hour { padding-block: 250px 90px; }
+.beach .hour::before { display: none; }
+.beach .card { background: rgba(255, 249, 238, .9); border-radius: 26px; padding: 30px 32px; box-shadow: 0 20px 50px -30px rgba(60, 40, 20, .4); }
+
+.dusk { background: linear-gradient(180deg, var(--page) 0%, #F1D6C2 30%, #DDA9A0 70%, #B98A9C 100%); }
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 30px; max-width: 600px; align-items: start; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 36px; align-items: start; }
+.dusk .phone figcaption { color: #4F3640; }
+
+/* Evening: Plus */
+.evening { background: linear-gradient(180deg, #B98A9C 0, #745878 64px, #6A5174 45%, #5E4A6C 100%); color: #FFF3E0; }
+.evening .hour::before { border-color: rgba(255, 236, 214, .2); }
+.evening .time { color: #FFD9B8; }
+.evening .hour p { color: #F0E0E4; }
+.evening .phone figcaption { color: #F0E0E4; }
+.also { font-family: var(--display); font-weight: 700; font-size: 22px; color: #FFF3E0; margin: 46px 0 10px; }
+.extras { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 36px; max-width: 900px; }
+.extras li { color: #F0E0E4; padding-top: 12px; border-top: 1px solid rgba(255, 236, 214, .2); }
+.extras b { color: #FFF3E0; }
+.also-line { margin: 34px 0 0; max-width: 60ch; color: #F0E0E4; }
+.also-line a { color: #FFE2C6; font-weight: 700; }
+@media (max-width: 760px) { .extras { grid-template-columns: 1fr; } }
+.tag { display: inline-block; font: 700 13px var(--text); letter-spacing: .02em; padding: 3px 10px; border-radius: 999px; background: rgba(255, 236, 214, .18); color: #FFE6C8; margin-bottom: 14px; }
+
+/* Night: what Soonish leaves out */
+.after { color: #F3E8DC; background:
+  radial-gradient(1.2px 1.2px at 14% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 34% 6%, #fff 50%, transparent 51%),
+  radial-gradient(1.4px 1.4px at 72% 9%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 88% 22%, #fff 50%, transparent 51%),
+  radial-gradient(1px 1px at 55% 18%, #fff 50%, transparent 51%),
+  linear-gradient(180deg, #5E4A6C 0%, #2A2238 20%, var(--night) 60%); }
+.less { list-style: none; padding: 0; margin: 26px 0 0; display: grid; max-width: 760px; }
+.less li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; padding: 18px 0; border-top: 1px solid rgba(255, 236, 214, .12); align-items: baseline; }
+.less s { text-decoration: none; position: relative; color: #F4EAEE; justify-self: start; }
+.less s::after { content: ""; position: absolute; left: -2px; right: -4px; top: 56%; height: 1.5px; border-radius: 3px; background: linear-gradient(90deg, #C8704F, #F2C066 70%, #FFE6B0); box-shadow: 0 0 4px rgba(242, 192, 102, .3); transform-origin: left; transform: scaleX(var(--x, 1)); transition: transform .9s cubic-bezier(.3,.7,.2,1); }
+.less span { color: #FFF3E0; font-weight: 600; }
+
+.dawn { background: linear-gradient(180deg, var(--night) 0%, #3E2C45 18%, #B9728A 40%, #E39A6A 62%, #F4DDC2 86%, var(--page) 100%); }
+.dawn .hour::before { display: none; }
+.dawn .time { color: #FFE6C8; }
+.dawn h2 { color: #2A1A12; }
+.dawn .free { font-weight: 600; margin-top: 22px; color: #3A2A20; }
+.small-sun { width: 90px; height: 45px; border-radius: 90px 90px 0 0; background: radial-gradient(circle at 50% 100%, #FFF8E2, #FFE9B8 45%, #F2C066 80%); box-shadow: 0 -10px 60px 10px rgba(255, 220, 160, .45); margin-bottom: 22px; }
+footer { padding-block: 36px 50px; font-size: 13px; color: var(--ink2); }
+footer a { color: var(--ink2); display: inline-block; padding-block: 14px; }
+footer .tm { margin: 4px 0 0; max-width: 70ch; }
+
+@media (max-width: 760px) {
+  .hero-grid, .why-in { grid-template-columns: 1fr; gap: 26px; }
+  .hour { grid-template-columns: 1fr; padding-block: 52px; }
+  .hour::before { display: none; }
+  .time { text-align: left; padding: 0 0 8px; }
+  .split { grid-template-columns: 1fr; }
+  .trio { grid-template-columns: 1fr 1fr; }
+  .trio .phone:nth-child(3) { grid-column: 1 / -1; width: 50%; justify-self: center; margin-top: 0; }
+  .less li { grid-template-columns: 1fr; gap: 4px; }
+  .topbar nav { gap: 14px; font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .check::before, .prompt svg { animation: none; }
+  .less s::after { transition: none; }
+}
+/* Clips: each can be paused or played again from a small button in its corner (or a tap on it).
+   A clip plays once when it comes into view, then rests on its last frame. In a row, the clips
+   play one at a time, left to right. On a phone, a row is a sideways swipe. */
+.phone { position: relative; }
+.phone video { cursor: pointer; }
+.clipbtn { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.clipbtn span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(34, 26, 22, .62); color: #FFF8EE; box-shadow: 0 2px 8px rgba(0, 0, 0, .18); transition: transform .15s, background .15s; }
+.clipbtn svg { width: 15px; height: 15px; }
+.clipbtn:hover span { background: rgba(34, 26, 22, .8); transform: scale(1.06); }
+.clipbtn[data-state="pause"] span { opacity: .55; }
+.clipbtn[data-state="pause"]:hover span, .clipbtn[data-state="pause"]:focus-visible span { opacity: 1; }
+@media (max-width: 760px) {
+  [data-clips] { display: flex !important; gap: 14px !important; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; margin-left: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(20px, env(safe-area-inset-right, 0px))); padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); scroll-padding-inline: max(20px, env(safe-area-inset-left, 0px)); max-width: none !important; }
+  [data-clips]::-webkit-scrollbar { display: none; }
+  [data-clips] > .phone { flex: 0 0 66%; width: auto !important; margin-top: 0 !important; scroll-snap-align: start; grid-column: auto !important; justify-self: auto !important; }
+}
+@media print { * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .clipbtn { display: none; } }
+</style>
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="./"><img src="images/icon.png?v=20261122b" alt="" width="32" height="32">Soonish</a>
+      <nav><a href="features.html">Features</a><a href="support.html">Support</a></nav>
+    </header>
+  </div>
+  <div class="skyband" aria-hidden="true">
+    <svg class="arcsvg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+      <path d="M -10 300 Q 500 -40 1010 300" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="trail" d="" fill="none" stroke="#E9A24A" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <span class="lab l6">6 AM</span><span class="lab l10">10 PM</span>
+    <div id="sun">
+      <div class="halo"></div>
+      <svg viewBox="-85 -85 170 170" width="170" height="170">
+        <defs><radialGradient id="disc" cx=".45" cy=".4" r=".62"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".55" stop-color="#FFE9B8"/><stop offset="1" stop-color="#F2C066"/></radialGradient></defs>
+        <circle r="30" fill="url(#disc)" stroke="#FFF3D6" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="horizon"></div>
+  </div>
+  <div class="wrap">
+    <p class="kicker">Your one thing</p>
+    <div class="onething">
+      <button class="check" id="check" type="button" aria-pressed="false" aria-label="Check off Start with one"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="#5A3A0E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div>
+        <h1>Start with&nbsp;one.</h1>
+        <p class="status" id="status" aria-live="polite"><span class="prompt"><svg width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M21 7H3M8 1.5L2.5 7 8 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Check it off, and watch the sun.</span></p>
+      </div>
+    </div>
+    <div class="hero-grid">
+      <p class="lede"><b>A to-do app for ADHD minds.</b> Get everything out of your head, and Soonish decides where to start: one thing for today. Check it off and the sun rises. Nudges stop the moment it’s done.</p>
+      <form id="signup" class="signup" action="https://app.kit.com/forms/10190717/subscriptions" method="post">
+        <label for="email">Coming January 1. Get an email when Soonish is out.</label>
+        <div class="row"><input id="email" type="email" placeholder="you@example.com" name="email_address" autocomplete="email" required><button class="btn" type="submit">Notify me</button></div>
         <p class="fine">One email at launch. No spam. Unsubscribe any time. <a href="privacy.html#launch-emails">Privacy</a></p>
       </form>
     </div>
-    <figure class="phone">
-      <video data-clip data-rate="0.7" muted loop playsinline preload="none" poster="clips/sunrise.jpg?v=20261114g"
-             aria-label="Today in Soonish: one thing to do, Call the dentist. A tap checks it off, a small light flies up, and the sun rises over the page.">
-        <source src="clips/sunrise.mp4?v=20261114g" type="video/mp4">
-      </video>
-      <figcaption>Check off your one thing, and the sun rises.</figcaption>
-    </figure>
-  </section>
+  </div>
+</section>
 
-  <section class="moments">
-    <h2>It looks simple. It does a lot.</h2>
-    <p>A few of the moments that make Soonish feel different, straight from the app.</p>
-    <div class="reel six">
-      <figure class="phone">
-        <video data-clip data-rate="0.85" muted loop playsinline preload="none" poster="clips/scratchpad.jpg?v=20261116"
-               aria-label="The Scratchpad: typing Pay bills friday on the keyboard. It floats away, the This week folder opens with Pay bills glowing and tagged Fri, then the folder closes.">
-          <source src="clips/scratchpad.mp4?v=20261116" type="video/mp4">
-        </video>
-        <figcaption><b>Just type it.</b> &ldquo;Pay bills friday&rdquo; floats off, and Soonish shows you where it landed.</figcaption>
-      </figure>
-      <figure class="phone">
-        <video data-clip data-rate="0.8" muted loop playsinline preload="none" poster="clips/swap.jpg?v=20261116b"
-               aria-label="Today: the menu on Call the dentist, Swap for another, and Email Sam about Friday takes its place. It says Swapped, with Undo.">
-          <source src="clips/swap.mp4?v=20261116b" type="video/mp4">
-        </video>
-        <figcaption><b>Swap it.</b> Not feeling today&rsquo;s pick? Trade it for another, and undo if you change your mind.</figcaption>
-      </figure>
-      <figure class="phone">
-        <video data-clip data-rate="0.9" muted loop playsinline preload="none" poster="clips/keep-going.jpg?v=20261116"
-               aria-label="Today: the one thing is checked off and the sun rises. Keep going brings Call mom, which is checked off, then One more brings Dentist checkup, checked off too. It says 2 things done from your Scratchpad. Nice going!">
-          <source src="clips/keep-going.mp4?v=20261116" type="video/mp4">
-        </video>
-        <figcaption><b>Keep going.</b> Done with your one thing? You don&rsquo;t have to stop. One more, then another, as many as you like.</figcaption>
-      </figure>
-      <figure class="phone">
-        <video data-clip data-rate="0.8" muted loop playsinline preload="none" poster="clips/badge.jpg?v=20261115g"
-               aria-label="A Steady week badge spins in, its sunrise lights up and stars twinkle around it.">
-          <source src="clips/badge.mp4?v=20261115g" type="video/mp4">
-        </video>
-        <figcaption><b>Earn badges.</b> For steady weeks, focus hours and more, and they’re yours to keep.</figcaption>
-      </figure>
-      <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261114d"
-               aria-label="Need a minute: Today fades to night, the moon rises, and four small ways to reset appear.">
-          <source src="clips/need-a-minute.mp4?v=20261114d" type="video/mp4">
-        </video>
-        <figcaption><b>Need a minute?</b> The day turns to night, and everything else is hidden.</figcaption>
-      </figure>
-      <figure class="phone">
-        <video data-clip muted loop playsinline preload="none" poster="clips/day-off.jpg?v=20261116b"
-               aria-label="Take a day off: the umbrella opens on a beach as the sun rises. Tomorrow is tapped, a wave washes up the sand, and it says Tomorrow's yours.">
-          <source src="clips/day-off.mp4?v=20261116b" type="video/mp4">
-        </video>
-        <figcaption><b>Take a day off.</b> Pick the day, the wave rolls in, and your streak is safe.</figcaption>
-      </figure>
+<section class="why">
+  <div class="wrap">
+    <div class="why-in">
+      <div>
+        <h2>Why I made Soonish</h2>
+        <p class="pull">“Seeing everything I needed to do at once made me&nbsp;freeze.”</p>
+      </div>
+      <div>
+        <p>I have ADHD, and to-do apps never stuck for me. Seeing everything I needed to do at once made me freeze. The red badge number kept climbing until I stopped looking, and eventually I’d delete the app and feel disappointed in myself for not sticking with something that was meant to help.</p>
+        <p class="more-on-phone">I’d tried the big to-do apps too. They looked great, but I spent more time sorting my list than doing it, and the list only got longer.</p>
+        <p class="more-on-phone">So I built the opposite. The first version picked three things a day. Then I lived with it, and on hard days even three was too much. I caught myself marking days off that weren’t really days off, just so my streak wouldn’t break. So now Soonish starts with one.</p>
+        <details>
+          <summary>Read the rest</summary>
+          <p>You drop everything into the Scratchpad, and each day it shows you one thing. When that starts to feel easy, it asks if you’d like two, then three, but it never asks for more than three, and you can always go back.</p>
+          <p>Soonish nudges you gently, then goes quiet once you’re done. On a day off, or a day with nothing on your list, it doesn’t nudge you at all. Instead of a red number on the icon, a widget on your Home Screen shows what’s next. You earn badges for what you get done, and you’re never shamed for what you don’t.</p>
+          <p>I made it for people like me, but a lot of people get overwhelmed by how most to-do apps work and just need to take it one day, one task, at a time. I hope it helps you the way it’s helped me.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="hour">
+    <div class="time">9:41 AM</div>
+    <div class="split">
+      <div>
+        <h2>One thing, picked for you.</h2>
+        <p>Deciding where to start is the hardest part, so Soonish decides. It picks one thing each morning and says why: due today, important, a quick win.</p>
+        <p><b>Check it off and the sun rises</b> on its path from 6 AM to 10 PM. Your calendar and timed reminders sit on that path too.</p>
+        <p>When one a day feels easy, it asks if you’d like two. Never more than three.</p>
+      </div>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise.jpg?v=20261122b" aria-label="Today: Call the dentist is checked off, a small light flies up and the sun rises with its rays."><source src="clips/sunrise.mp4?v=20261122b" type="video/mp4"></video></figure>
     </div>
   </section>
 
-  <p class="more-link"><a href="features.html">See everything Soonish can do</a></p>
+  <section class="hour">
+    <div class="time">10:30 AM</div>
+    <div>
+        <h2>Swap it. Or keep going.</h2>
+        <p>Not feeling today’s pick? Trade it for another, and undo if you change your mind.</p>
+        <p>Done already? You don’t have to stop. One more, then another, as many as you like. It all counts, and the sun notices.</p>
+        <div class="duo" data-clips>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/swap-sun.jpg?v=20261122b" aria-label="Today: Call the dentist is swapped for Email Sam about Friday. Email Sam is checked off, a small light flies up, and the sun rises with its rays."><source src="clips/swap-sun.mp4?v=20261122b" type="video/mp4"></video><figcaption>Swap it.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/keep-going.jpg?v=20261122b" aria-label="Keep going is tapped and Up next brings Call the dentist. It's checked off, and Today says One more done. The sun noticed."><source src="clips/keep-going.mp4?v=20261122b" type="video/mp4"></video><figcaption>Or keep going.</figcaption></figure>
+        </div>
+      </div>
+    </section>
 
-  <section class="story">
-    <h2>Why I made Soonish</h2>
-    <p>I have ADHD, and to-do apps never stuck for me. Seeing everything I needed to do at once made me freeze. The red badge number kept climbing until I stopped looking, and eventually I’d delete the app and feel disappointed in myself for not sticking with something that was meant to help.</p>
-    <p>I’d tried the big to-do apps too. They looked great, but I spent more time sorting my list than doing it, and the list only got longer.</p>
-    <p>So I built the opposite. The first version picked three things a day. Then I lived with it, and on hard days even three was too much. I caught myself marking days off that weren’t really days off, just so my streak wouldn’t break, without doing anything at all. Three was still the same wall, just smaller.</p>
-    <p>So now Soonish starts with one. You drop everything into the Scratchpad, and each day it shows you one thing. When that starts to feel easy, it asks if you’d like two, then three, but it never asks for more than three, and you can always go back.</p>
-    <p>Soonish nudges you gently, then goes quiet once you’re done. On a day off, or a day with nothing on your list, it doesn’t nudge you at all. And if a day slips by, Soonish asks the next morning whether it was a day off. It only asks about yesterday, and nobody gets shamed for it.</p>
-    <p>Instead of a red number on the icon, a widget on your Home Screen shows what’s next, and you can check it off right there. You earn badges for what you get done, and you’re never shamed for what you don’t.</p>
-    <p>I made it for people like me, but a lot of people get overwhelmed by how most to-do apps work and just need to take it one day, one task, at a time. I hope it helps you the way it’s helped me.</p>
+  <section class="hour">
+    <div class="time">11:20 AM</div>
+    <div class="split">
+      <div>
+        <h2>Just type it. Soonish sorts it.</h2>
+        <p>No folders to choose, no priorities to set. Write it the way you’d say it, and Soonish reads the day and time.</p>
+        <p class="typed"><span>haircut <em>tuesday at noon</em></span><span>pay bills <em>friday</em></span><span>water plants <em>every sunday</em></span></p>
+        <p>Anything without a date sorts itself too: calls with calls, errands with errands.</p>
+      </div>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/dates.jpg?v=20261122b" aria-label="The Scratchpad: Haircut Tuesday at noon is typed and lands under This month with Tue 12pm in the margin."><source src="clips/dates.mp4?v=20261122b" type="video/mp4"></video></figure>
+    </div>
   </section>
+</div>
 
-  <section class="leaves-out">
-    <h2>Soonish does less, on purpose</h2>
-    <table>
-      <thead><tr><th scope="col">Instead of</th><th scope="col">Soonish</th></tr></thead>
-      <tbody>
-        <tr><td>Priority levels to set on every task</td><td>Mark what matters as Important, if you like. Soonish sorts the rest.</td></tr>
-        <tr><td>Tags you made once and forgot</td><td>Search finds it for you.</td></tr>
-        <tr><td>An &ldquo;overdue&rdquo; label</td><td>Late things come back gently.</td></tr>
-        <tr><td>A streak that breaks after one bad day</td><td>Days off never count against you.</td></tr>
-        <tr><td>A red number that keeps climbing</td><td>No number unless you turn it on, and then it only counts down what&rsquo;s left today.</td></tr>
-      </tbody>
-    </table>
-    <p class="closing">Less to manage, so more gets done.</p>
-  </section>
-
-  <div class="card small">
-    <p>No account. Nothing is ever sent to us. Free, with no limits. Plus is an optional extra.</p>
+<div class="night">
+  <div class="wrap">
+    <section class="hour" style="padding-block: 150px 110px;">
+      <div class="time">3:30 PM</div>
+      <div class="split">
+        <div>
+          <div class="moon" aria-hidden="true"></div>
+          <h2>When it’s a lot, take a minute.</h2>
+          <p>One tap and the day turns to night. Everything else is hidden.</p>
+          <p><b>Three slow breaths</b> with the moon over a lake, <b>a 2-minute reset</b>, or <b>Clear my head</b>, where you write it all out and let it go, or keep it locked away.</p>
+        </div>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261122b" aria-label="Need a minute: Today fades to night and the moon rises over the water. Three slow breaths: Breathe in, Hold, Breathe out."><source src="clips/need-a-minute.mp4?v=20261122b" type="video/mp4"></video></figure>
+      </div>
+    </section>
   </div>
+</div>
 
-  <footer>
-    Soonish is made by Small Wins Studio LLC · <a href="features.html">Features</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a>
-    <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
-  </footer>
-</main>
-<script src="clips.js?v=20261115b"></script>
+<div class="beach">
+  <div class="wrap">
+    <section class="hour">
+      <div class="time" style="color:#7A4E2A">A day off</div>
+      <div class="split">
+        <div class="card">
+          <h2>Take a day off. Your streak is safe.</h2>
+          <p>Tap the umbrella, pick the day, and a wave rolls in. No nudges, nothing picked, and your week stays whole. Forgot to mark a quiet day? If your week is on the line, Soonish asks the next morning.</p>
+        </div>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/day-off.jpg?v=20261122b" aria-label="Take a day off: the umbrella opens on a beach and a small wave rolls in. Tomorrow is tapped, a bigger wave washes up to the chair and draws back, and it says Tomorrow's yours."><source src="clips/day-off.mp4?v=20261122b" type="video/mp4"></video></figure>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="dusk">
+  <div class="wrap">
+    <section class="hour" id="features">
+      <div class="time">6:00 PM</div>
+      <div>
+        <h2>Feel every win.</h2>
+        <p>Badges for steady weeks, focus hours and fresh starts, each with its own moment, kept on a shelf of constellations. Wins counts everything you’ve done since you started, and it only goes up.</p>
+        <div class="trio" data-clips data-rate="1.2">
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise-badge.jpg?v=20261122b" aria-label="The one thing is checked off, the sun rises, then a Steady week badge arrives with the sun rising behind it."><source src="clips/sunrise-badge.mp4?v=20261122b" type="video/mp4"></video><figcaption>A Steady week.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/shelf.jpg?v=20261122b" aria-label="Wins to Your accomplishments: the sun sets into a night sky of constellations. Milestones is tapped, and the 50 things done badge opens while lanterns rise and spell 50."><source src="clips/shelf.mp4?v=20261122b" type="video/mp4"></video><figcaption>Your accomplishments.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/progress.jpg?v=20261122b" aria-label="Wins: the total counts up from 52 to 61, and this week's bar climbs by nine."><source src="clips/progress.mp4?v=20261122b" type="video/mp4"></video><figcaption>Wins only go up.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="evening">
+  <div class="wrap">
+    <section class="hour">
+      <div class="time">8:00 PM</div>
+      <div>
+        <span class="tag">Soonish Plus</span>
+        <h2 style="color:#FFF3E0">A little more, if you want it.</h2>
+        <p>Everything above is free, with no limits. Plus adds a few extras on top: tiny first steps for a task that feels too big, the patterns in how you get things done, and themes that change the whole sky.</p>
+        <div class="trio" data-clips data-rate="1.2">
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/break-it-down.jpg?v=20261122b" aria-label="Break it down from Today: Call the dentist becomes three small first steps and one is swapped for another. On Today, each step is checked off in turn until All 3 steps done, then Call the dentist is checked off and the sun rises."><source src="clips/break-it-down.mp4?v=20261122b" type="video/mp4"></video><figcaption>Break it down, on iPhone models with Apple Intelligence.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/patterns.jpg?v=20261122b" aria-label="Your patterns on Wins, then See all your patterns: your longest run, a morning finisher, your best day, A minute helps you, Calls are your thing, and An early start keeps you going, each with its own picture."><source src="clips/patterns.mp4?v=20261122b" type="video/mp4"></video><figcaption>Your patterns.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/themes.jpg?v=20261122b" aria-label="Today in nine themes: Sunrise, Sea glass, Dusk, Rosewood, Brick, Denim, Titanium, Aurora, and Your photo with a sandy path through the dunes to the sea."><source src="clips/themes.mp4?v=20261122b" type="video/mp4"></video><figcaption>Themes, each with its own sky. Prefer just the color? Turn off sky details.</figcaption></figure>
+        </div>
+        <p class="also-line">Also in Plus: Today on your Lock Screen, StandBy, focus sounds, adding from your Mac and matching app icons. <a href="features.html#plus">See all of Plus</a></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="after">
+  <div class="wrap">
+    <section class="hour" style="padding-block: 130px 140px;">
+      <div class="time">10:00 PM</div>
+      <div>
+        <h2 style="color:#FFF3E0">Soonish does less, on purpose.</h2>
+        <ul class="less" id="less">
+          <li><s>Priority levels on every task</s><span>Mark what matters Important, if you like. Soonish sorts the rest.</span></li>
+          <li><s>Tags you made once and forgot</s><span>Search finds it for you.</span></li>
+          <li><s>An “overdue” label</s><span>What you didn’t get to comes back tomorrow, with no label.</span></li>
+          <li><s>A streak that breaks after one bad day</s><span>Rough day? Count it as a day off the next morning. Your week stays whole.</span></li>
+          <li><s>A red number that keeps climbing</s><span>No number unless you turn it on, and then only what’s left of today’s picks. It only counts down.</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="dawn">
+  <div class="wrap">
+    <section class="hour" style="padding-block: 170px 90px;">
+      <div class="time">Tomorrow, 6 AM</div>
+      <div>
+        <div class="small-sun" aria-hidden="true"></div>
+        <h2>Start with one. On January 1.</h2>
+        <form class="signup" action="https://app.kit.com/forms/10190717/subscriptions" method="post">
+          <label for="email2">Get an email the day Soonish is out.</label>
+          <div class="row"><input id="email2" type="email" placeholder="you@example.com" name="email_address" autocomplete="email" required><button class="btn" type="submit">Notify me</button></div>
+          <p class="fine" style="color:#4F3A2E">One email at launch. No spam. Unsubscribe any time.</p>
+        </form>
+        <p class="free">In the app: no account, and nothing is ever sent to us. Free, with no limits. Plus is an optional extra.</p>
+      </div>
+    </section>
+    <footer>Soonish is made by Small Wins Studio LLC. <a href="features.html">Features</a>, <a href="support.html">Support</a>, <a href="privacy.html">Privacy</a>.
+      <p class="tm">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, iCloud Drive, Apple Intelligence, Dynamic Island, StandBy, Shortcuts, TestFlight and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p></footer>
+  </div>
+</div>
+
+<script>
+(() => {
+  const hero = document.getElementById('hero');
+  const band = hero.querySelector('.skyband');
+  const sun = document.getElementById('sun');
+  const trail = document.getElementById('trail');
+  const check = document.getElementById('check');
+  const status = document.getElementById('status');
+  const promptHTML = status.innerHTML;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 9:41 AM on the path that runs from 6 AM to 10 PM, as in the app's screenshots.
+  const t = (9 * 60 + 41 - 360) / 960;
+  const P0 = { x: -10, y: 300 }, C = { x: 500, y: -40 }, P1 = { x: 1010, y: 300 };
+  const pt = s => { const u = 1 - s; return { x: u*u*P0.x + 2*u*s*C.x + s*s*P1.x, y: u*u*P0.y + 2*u*s*C.y + s*s*P1.y }; };
+  let rise = 0;
+  function draw() {
+    const w = band.clientWidth, h = band.clientHeight, p = pt(t);
+    const x = p.x / 1000 * w, top = p.y / 300 * h, y = h + (top - h) * rise;
+    sun.style.transform = `translate(${x}px, ${y}px)`;
+    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); }
+    trail.setAttribute('d', d);
+  }
+  function animate(to, ms, done) {
+    if (reduce) { rise = to; draw(); done && done(); return; }
+    const from = rise, start = performance.now();
+    const step = n => { const k = Math.min(1, (n - start) / ms), e = 1 - Math.pow(1 - k, 3);
+      rise = from + (to - from) * e; draw(); if (k < 1) requestAnimationFrame(step); else done && done(); };
+    requestAnimationFrame(step);
+  }
+  // The burst, over the whole page as in the app: long beams, two rings, the glow swells, the sky warms.
+  function burst() {
+    const r = sun.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const layer = document.createElement('div'); layer.className = 'burst';
+    layer.innerHTML = `<div class="beams" style="left:${cx}px;top:${cy}px"></div><div class="ring" style="left:${cx}px;top:${cy}px"></div><div class="ring two" style="left:${cx}px;top:${cy}px"></div>`;
+    document.body.appendChild(layer); setTimeout(() => layer.remove(), 2800);
+    sun.classList.remove('swell'); void sun.offsetWidth; sun.classList.add('swell');
+    hero.style.setProperty('--sx', (cx / innerWidth * 100) + '%');
+    hero.classList.remove('warm'); void hero.offsetWidth; hero.classList.add('warm');
+  }
+  const clock = d => d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  let busy = false;
+  check.addEventListener('click', () => {
+    if (busy) return;
+    const on = check.getAttribute('aria-pressed') !== 'true';
+    check.setAttribute('aria-pressed', on);
+    if (!on) { status.innerHTML = promptHTML; animate(0, 700); return; }
+    status.textContent = 'Done. The sun noticed.';
+    if (reduce) { animate(1, 0); return; }
+    busy = true;
+    const ring = document.createElement('span'); ring.className = 'ripple'; check.appendChild(ring); setTimeout(() => ring.remove(), 800);
+    // A small light leaves the circle and flies up into the sun; the sun rises when it lands.
+    const a = check.getBoundingClientRect(), s = sun.getBoundingClientRect();
+    const mote = document.createElement('div'); mote.className = 'mote'; document.body.appendChild(mote);
+    const from = { x: a.left + a.width / 2, y: a.top + a.height / 2 }, to = { x: s.left + s.width / 2, y: s.top + s.height / 2 };
+    const start = performance.now();
+    const fly = n => { const k = Math.min(1, (n - start) / 700), e = k < .5 ? 2*k*k : 1 - Math.pow(-2*k + 2, 2) / 2;
+      mote.style.left = from.x + (to.x - from.x) * e + 'px'; mote.style.top = from.y + (to.y - from.y) * e - Math.sin(Math.PI * k) * 70 + 'px';
+      if (k < 1) requestAnimationFrame(fly); else { mote.remove(); animate(1, 1300, () => { burst(); busy = false; }); } };
+    requestAnimationFrame(fly);
+  });
+  draw(); addEventListener('resize', draw);
+
+  // Clips (review, Nov 22): each plays once when it comes into view, then rests on its last frame
+  // with a button to play it again. A tap on a clip, or its corner button, pauses or plays it. In a
+  // row ([data-clips]), they play one at a time, left to right. Clips load only as they come near.
+  // With Reduce Motion nothing starts on its own; every clip waits on its play button.
+  (() => {
+    const reduceClips = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const ICON = {
+      pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>',
+      play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>',
+      replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1.5L7 6l5 4.5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z" fill="currentColor"/></svg>'
+    };
+    const LABEL = { pause: 'Pause clip', play: 'Play clip', replay: 'Play clip again' };
+    const set = (v, state) => { const b = v._btn; if (b.dataset.state === state) return; b.dataset.state = state; b.innerHTML = '<span>' + ICON[state] + '</span>'; b.setAttribute('aria-label', LABEL[state]); };
+    const vids = [...document.querySelectorAll('video[data-clip]')];
+    const groups = [...document.querySelectorAll('[data-clips]')].map(el => ({ el, vids: [...el.querySelectorAll('video[data-clip]')] }));
+    vids.forEach(v => { if (!v.closest('[data-clips]')) groups.push({ el: v.closest('.phone'), vids: [v] }); });
+    const groupOf = v => groups.find(g => g.vids.includes(v));
+    const rate = g => parseFloat(g.el.dataset.rate) || 1;
+    const bring = (g, v) => {   // In a sideways row, bring the playing clip into view.
+      const row = g.el, fig = v.closest('.phone');
+      if (row.scrollWidth > row.clientWidth + 4 && row.contains(fig))
+        row.scrollTo({ left: fig.offsetLeft - row.offsetLeft - 20, behavior: reduceClips ? 'auto' : 'smooth' });
+    };
+    const start = (g, v, handoff) => {
+      // A handoff in a row leaves the clip before it resting on its last frame.
+      if (!handoff) g.vids.forEach(o => { if (o !== v && !o.paused) o.pause(); });
+      if (v.ended || v.currentTime >= v.duration - 0.05) v.currentTime = 0;
+      v.preload = 'auto'; v.playbackRate = rate(g); bring(g, v);
+      const p = v.play(); if (p) p.catch(() => set(v, 'play'));
+      // Load the next clip in the row now, so it's ready the moment it's needed.
+      const nx = g.vids[g.vids.indexOf(v) + 1]; if (nx) nx.preload = 'auto';
+    };
+    vids.forEach(v => {
+      v.loop = false; v.removeAttribute('loop'); v.removeAttribute('controls');
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'clipbtn';
+      v.closest('.phone').appendChild(b); v._btn = b; set(v, 'play');
+      const toggle = () => { const g = groupOf(v); g.auto = false; if (v.paused) start(g, v); else v.pause(); };
+      b.addEventListener('click', toggle); v.addEventListener('click', toggle);
+      v.addEventListener('play', () => set(v, 'pause'));
+      v.addEventListener('pause', () => set(v, v.ended ? 'replay' : 'play'));
+      // Each clip holds its last frame for a moment at the end. In a row, the next clip starts as
+      // that hold begins, so there's no wait between them.
+      const handoff = () => {
+        const g = groupOf(v), k = g.vids.indexOf(v);
+        if (!g.auto || g.i !== k || v._handed) return;
+        v._handed = true;
+        if (k + 1 < g.vids.length) { g.i = k + 1; start(g, g.vids[g.i], true); } else g.auto = false;
+      };
+      v.addEventListener('timeupdate', () => { if (v.duration && v.duration - v.currentTime < 1.4) handoff(); });
+      v.addEventListener('play', () => { if (v.currentTime < 0.5) v._handed = false; });
+      v.addEventListener('ended', () => { set(v, 'replay'); handoff(); });
+    });
+    if (!('IntersectionObserver' in window)) return;
+    const near = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      groups.filter(g => g.el === e.target).forEach(g => g.vids.forEach(v => { if (v.preload === 'none') v.preload = 'metadata'; }));
+      near.unobserve(e.target);
+    }), { rootMargin: '600px 0px' });
+    const seen = new IntersectionObserver(es => es.forEach(e => {
+      const g = groups.find(g => g.el === e.target); if (!g) return;
+      if (e.isIntersecting) {
+        if (reduceClips) return;
+        if (!g.started) { g.started = true; g.auto = true; g.i = 0; start(g, g.vids[0]); }
+        else if (g.held) { g.held = false; start(g, g.held_v); }
+      } else {
+        const v = g.vids.find(v => !v.paused);
+        if (v) { g.held = true; g.held_v = v; v.pause(); }
+      }
+    }), { threshold: .4 });
+    groups.forEach(g => { near.observe(g.el); seen.observe(g.el); });
+  })();
+
+  // On a phone, the story shows the quote and its first paragraph; the rest folds into Read the rest.
+  if (matchMedia('(max-width: 760px)').matches) {
+    const sum = document.querySelector('.why details summary');
+    [...document.querySelectorAll('.why .more-on-phone')].reverse().forEach(p => sum.after(p));
+  }
+
+  // The cross-outs draw once when the list comes into view.
+  const less = document.getElementById('less');
+  if (!reduce && 'IntersectionObserver' in window) {
+    less.querySelectorAll('s').forEach((x, i) => { x.style.setProperty('--x', 0); x.style.transitionDelay = (i * .18) + 's'; });
+    new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { less.querySelectorAll('s').forEach(x => x.style.setProperty('--x', 1)); o.disconnect(); } }), { threshold: .4 }).observe(less);
+  }
+})();
+</script>
+
 </body>
 </html>

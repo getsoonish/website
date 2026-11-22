@@ -3,107 +3,348 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Soonish Support</title>
-  <meta name="description" content="Help with Soonish: how it picks, days off, backups, Soonish Plus and adding from your Mac.">
   <link rel="canonical" href="https://getsoonish.co/support.html">
-  <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
-  <link rel="stylesheet" href="style.css?v=20261115c">
+  <meta name="description" content="Help with Soonish: how it picks, days off, backups, Soonish Plus and adding from your Mac.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://getsoonish.co/support.html">
+  <meta property="og:site_name" content="Soonish">
+  <meta property="og:title" content="Soonish Support">
+  <meta property="og:description" content="Help with Soonish, the ADHD-friendly to-do app.">
+  <meta property="og:image" content="https://getsoonish.co/images/social.png?v=20261122b">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Soonish: Start with one. The app icon, and Today with the sun risen over the morning sky.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.png?v=20261122b" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261122b">
+<style>
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Heading.ttf") format("truetype"); font-weight: 400 650; font-display: swap; }
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Display.ttf") format("truetype"); font-weight: 651 900; font-display: swap; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden]:not([hidden="until-found" i]) { display: none !important; }
+</style>
 </head>
 <body>
-<main>
-  <nav><a href="./">Soonish</a><a href="features.html">Features</a><a href="privacy.html">Privacy</a></nav>
+<style>
+/* Support, in the home and features pages' look: the morning sky up top, then the questions
+   grouped in the Scratchpad's ruled margin, each one folded until it's tapped, like a folder.
+   Quiet and practical: one warm accent, no night or evening bands. */
+:root {
+  --ink: #2A2018;
+  --ink2: #655850;
+  --accent: #9A4218;
+  --apricot: #D4692F;
+  --gold: #F2C066;
+  --page: #F6ECE0;
+  --margin: rgba(196, 90, 70, 0.28);
+  --rule: rgba(101, 88, 80, .16);
+  --tint: rgba(101, 88, 80, .08);
+  --display: "Bricolage Soonish", "Bricolage Grotesque", "Avenir Next", ui-rounded, system-ui, sans-serif;
+  --text: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid #2A2018; outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
 
-  <h1>Support</h1>
-  <p class="tagline">Need a hand? We’re happy to help.</p>
+.top { position: relative; margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+  background: linear-gradient(180deg, #E6B98C 0%, #EBCBA6 22%, #F1DCC3 44%, var(--page) 70%); }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 7.5px; display: block; box-shadow: 0 1px 2px rgba(80, 40, 10, .18); }
+.topbar nav { display: flex; gap: 22px; font-weight: 600; }
+.topbar nav a { color: var(--ink); text-decoration: none; opacity: .85; display: inline-block; padding-block: 11px; }
+.topbar nav a[aria-current] { opacity: 1; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--apricot); }
 
-  <div class="card">
-    <p>Email <a href="mailto:getsoonishapp@gmail.com">getsoonishapp@gmail.com</a>, or use <strong>Settings → Send feedback</strong> in the app. That fills in your app and iOS versions for you.</p>
-    <p>Soonish is made by Small Wins Studio LLC.</p>
-    <p>Testing the beta? Take a screenshot while using Soonish and TestFlight will offer to send it to us with a comment. That’s the quickest way to show what you mean.</p>
+.skyline { position: relative; height: clamp(100px, 12vw, 140px); max-width: 1180px; margin: 0 auto; color: var(--ink); clip-path: inset(-400px -300px 0 -300px); }
+.skyline svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.skyline .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .22; }
+.skyline .sun { position: absolute; width: 140px; height: 140px; margin: -70px 0 0 -70px; border-radius: 50%;
+  background: radial-gradient(circle, #FFF8E2 0 19%, #FFE9B8 22%, rgba(247, 201, 135, .35) 36%, transparent 68%); }
+
+.intro { padding-block: 34px 10px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: end; }
+.intro h1 { font-family: var(--display); font-weight: 800; font-size: clamp(46px, 7.4vw, 92px); line-height: .95; letter-spacing: -0.035em; margin: 0 0 14px; }
+.intro .lede { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); margin: 0; max-width: 34ch; }
+.contact { background: var(--tint); border: 1px solid rgba(101, 88, 80, .1); border-radius: 18px; padding: 20px 22px; display: grid; gap: 8px; }
+.contact .label { font-size: 14px; font-weight: 650; color: var(--ink2); }
+.contact .email { font-family: var(--display); font-weight: 700; font-size: clamp(20px, 2.2vw, 26px); color: var(--ink); overflow-wrap: anywhere; text-decoration-color: rgba(212, 105, 47, .5); text-underline-offset: 4px; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.contact button { font: inherit; font-weight: 700; font-size: 15px; border: 0; border-radius: 999px; padding: 8px 16px; background: var(--apricot); color: #2C1406; cursor: pointer; }
+.contact button:focus-visible { outline: 3px solid #2A2018; outline-offset: 2px; }
+.contact p { margin: 0; color: var(--ink2); font-size: 15px; }
+.contact p b { color: var(--ink); font-weight: 650; }
+
+.jump { list-style: none; padding: 0; margin: 34px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; max-width: 980px; }
+.jump .tile { display: grid; align-content: start; gap: 2px; height: 100%; padding: 12px 14px 13px; border-radius: 14px; text-decoration: none; background: var(--tint); border: 1px solid rgba(101, 88, 80, .1); transition: background .15s, border-color .15s; }
+.jump .tile:hover { background: rgba(212, 105, 47, .1); border-color: rgba(212, 105, 47, .35); }
+.jump b { font-family: var(--display); font-weight: 650; font-size: 17px; color: var(--ink); }
+.jump span { font-size: 14px; line-height: 1.35; color: var(--ink2); }
+
+.sec { position: relative; display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 0 40px; padding-block: 44px; scroll-margin-top: 10px; }
+.sec::before { content: ""; position: absolute; left: 140px; top: 0; bottom: 0; border-left: 1.5px solid var(--margin); }
+.sec > .label { margin: 0; font-family: var(--display); font-weight: 600; font-size: 15px; color: #9A4218; text-align: right; padding: 18px 18px 0 0; line-height: 1.25; }
+.qs { max-width: 760px; border-top: 1px solid var(--rule); }
+details { border-bottom: 1px solid var(--rule); }
+summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 18px; align-items: baseline; padding: 16px 0; font-family: var(--display); font-weight: 650; font-size: clamp(18px, 1.7vw, 20px); line-height: 1.3; color: var(--ink); }
+summary::-webkit-details-marker { display: none; }
+summary h3 { margin: 0; font: inherit; }
+summary::after { content: ""; flex: none; width: 9px; height: 9px; margin-right: 4px; border-right: 2px solid var(--ink2); border-bottom: 2px solid var(--ink2); transform: translateY(-3px) rotate(45deg); transition: transform .2s; }
+details[open] summary::after { transform: translateY(2px) rotate(225deg); }
+summary:hover { color: var(--accent); }
+summary:focus-visible { outline: 3px solid #2A2018; outline-offset: 4px; border-radius: 6px; }
+.a { padding: 0 0 20px; color: var(--ink2); max-width: 64ch; }
+.a p { margin: 0 0 12px; }
+.a p:last-child { margin-bottom: 0; }
+.a b { color: var(--ink); font-weight: 650; }
+.a ol, .a ul { margin: 0 0 12px; padding-left: 22px; display: grid; gap: 8px; }
+.a q { quotes: "\201C" "\201D"; }
+
+.close { background: linear-gradient(180deg, var(--page) 0%, #F1D6C2 35%, #DDA9A0 100%); }
+.close .in { padding-block: 80px 40px; text-align: center; }
+.close h2 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4vw, 48px); letter-spacing: -0.02em; margin: 0 0 10px; }
+.close p { margin: 0 auto; color: #4F3640; max-width: 46ch; }
+.close .email { font-family: var(--display); font-weight: 700; color: var(--ink); user-select: all; }
+footer { padding-block: 50px 40px; font-size: 13px; color: #4F3640; text-align: center; }
+footer a { color: #4F3640; display: inline-block; padding-block: 14px; }
+footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .85; }
+
+@media (max-width: 860px) { .intro { grid-template-columns: 1fr; gap: 24px; } }
+@media (max-width: 760px) {
+  .sec { grid-template-columns: 1fr; padding-block: 32px; }
+  .sec::before { display: none; }
+  .sec > .label { text-align: left; padding: 0 0 6px; }
+  .jump { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jump li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .topbar nav { gap: 14px; font-size: 15px; }
+}
+@media print { * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .clipbtn { display: none; } }
+</style>
+
+<div class="top">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="./"><img src="images/icon.png?v=20261122b" alt="" width="32" height="32">Soonish</a>
+      <nav><a href="./">Home</a><a href="features.html">Features</a><a href="support.html" aria-current="page">Support</a></nav>
+    </header>
   </div>
+  <div class="skyline" aria-hidden="true">
+    <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+      <path d="M -10 200 Q 500 -30 1010 200" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="trail" fill="none" stroke="#E9A24A" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <div class="sun" id="sun"></div>
+    <div class="horizon"></div>
+  </div>
+  <div class="wrap">
+    <div class="intro">
+      <div>
+        <h1>Support.</h1>
+        <p class="lede">Need a hand? We’re happy to help. Most answers are below.</p>
+      </div>
+      <div class="contact">
+        <span class="label">Email us</span>
+        <div class="row"><a class="email" id="email" href="mailto:support@getsoonish.co">support@getsoonish.co</a><button type="button" id="copy">Copy</button></div>
+        <p>Or use <b>Settings → Send feedback</b> in the app. It fills in your app and iOS versions for you.</p>
+        <p><b>Testing the beta?</b> Take a screenshot in Soonish and TestFlight offers to send it to us with a comment.</p>
+      </div>
+    </div>
+    <ul class="jump" aria-label="Topics">
+      <li><a class="tile" href="#your-day"><b>Your day</b><span>Picks, checking off, your goal</span></a></li>
+      <li><a class="tile" href="#dates"><b>Dates</b><span>Days, deadlines, repeats, times</span></a></li>
+      <li><a class="tile" href="#days-off"><b>Days off</b><span>Rest, and Need a minute</span></a></li>
+      <li><a class="tile" href="#badges"><b>Badges</b><span>How they work, sharing</span></a></li>
+      <li><a class="tile" href="#plus"><b>Soonish Plus</b><span>The extras, and your Mac</span></a></li>
+      <li><a class="tile" href="#look"><b>Look and nudges</b><span>Sky, widget, notifications</span></a></li>
+      <li><a class="tile" href="#your-data"><b>Your data</b><span>Backups, starting over</span></a></li>
+    </ul>
+  </div>
+</div>
 
-  <h2>Where is my data?</h2>
-  <p>On your iPhone. There’s no account, and nothing is sent to us.</p>
-  <p>Soonish also makes one backup of its own, once a day: a file in a Soonish folder in your iCloud Drive (you can see it in the Files app). If you delete Soonish and install it again, it offers to bring your list back from that file. It holds your tasks, history, badges and settings, but not files or photos attached to tasks, or your theme photo. You can turn it off, or save a copy anywhere you like, in <strong>Settings → Backup and restore</strong>.</p>
-  <p>That’s separate from your iPhone’s own iCloud Backup, which Apple makes for the whole phone if you have it on. Apple’s backup includes everything in Soonish, attachments too, but it’s only used when you set up a new or erased iPhone, not when you reinstall one app. So keep your own copy of any attachment you can’t lose.</p>
+<div class="wrap">
+  <section class="sec" id="your-day">
+    <h2 class="label">Your day</h2>
+    <div class="qs">
+      <details><summary><h3>Why only one thing a day?</h3></summary><div class="a">
+        <p>Starting is the hardest part, so Soonish starts you with one. Once one a day has become a habit, it asks if you’d like two a day, then three. You can change it any time in <b>Settings → Daily goal</b>, and doing more is always welcome: it all counts.</p>
+        <p>A day with nothing on your list is a quiet day, and it never breaks your streak.</p>
+      </div></details>
+      <details><summary><h3>How does Soonish pick for me?</h3></summary><div class="a">
+        <p>Anything due today comes first, then tasks you’ve marked Important, then what’s due soon and how long things have been waiting. A task set for a later day waits for that day, and a deadline more than a week away waits until it’s closer. It never gives you more than one task marked Heavy at once, unless two are due today.</p>
+        <p>Each pick shows a small reason. Don’t like one? Swap it out, and use <b>Back to Soonish’s picks</b> to undo.</p>
+        <p>Done with today and want more? <b>Keep going</b> brings the next thing: anything left for today, then what’s coming soonest, then things with no date. The Scratchpad’s Up next always shows the same thing.</p>
+      </div></details>
+      <details><summary><h3>I finished something that wasn’t in today’s picks. Does it count?</h3></summary><div class="a">
+        <p>Yes. Anything you finish counts toward your daily goal, whether it’s one of today’s picks or something from the Scratchpad. The sun rises on Today, nudges stop, and the day’s little sun lights up. It all counts toward Wins and badges too.</p>
+      </div></details>
+      <details><summary><h3>I checked something off by accident.</h3></summary><div class="a">
+        <p>Tap the check again to undo it. Or tap <b>•••</b> (or touch and hold the task) and choose <b>Mark as not done</b>. You can also find it in the Done tab. It goes back exactly where it was.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>I checked something off by accident.</h2>
-  <p>Checked-off tasks stay on Today for the day. Tap the check again to undo it, or tap <strong>•••</strong> (or touch and hold the task) and choose <strong>Mark as not done</strong>. You can also find it in the Done tab. It goes back exactly where it was.</p>
+  <section class="sec" id="dates">
+    <h2 class="label">Dates</h2>
+    <div class="qs">
+      <details><summary><h3>How do I put a task on a certain day?</h3></summary><div class="a">
+        <p>Just type the day anywhere in the line: <q>call mom tomorrow</q>, <q>dentist fri</q>, <q>rent oct 30</q> or <q>10/30</q>. The task waits in the Scratchpad and joins today’s picks that morning. <q>this weekend</q> means Saturday, and <q>next fri</q> means Friday of next week.</p>
+        <p>You can also tap <b>•••</b> on a task and choose <b>Set a date</b>.</p>
+      </div></details>
+      <details><summary><h3>What’s the difference between a day and a deadline?</h3></summary><div class="a">
+        <p>A plain date (<q>fri</q>) is the day you’ll do it, so it stays out of today’s picks until then. Add <q>by</q> or <q>due</q> (<q>by fri</q>) and it’s a deadline instead: Soonish may pick it earlier when there’s room. Switch between the two under Set a date or in Edit.</p>
+      </div></details>
+      <details><summary><h3>I gave a task the wrong date.</h3></summary><div class="a">
+        <p>Tap <b>•••</b> on the task and choose <b>Set a date</b> (or <b>Change date</b>). This works on Today too: pick a later day and it leaves today’s list and waits for that day.</p>
+      </div></details>
+      <details><summary><h3>Can tasks repeat?</h3></summary><div class="a">
+        <p>Yes. Type <q>every day</q>, <q>every weekday</q>, <q>every mon and thu</q>, <q>on tuesdays</q>, <q>weekly</q> or <q>each day this week</q>, or tap <b>•••</b> and choose <b>Repeat</b> to pick the days and an optional last day.</p>
+        <p>Each repeat joins today’s picks on its day. Check it off and the next one waits for its day. Miss a day and it simply moves on: nothing piles up, and nothing counts against you.</p>
+      </div></details>
+      <details><summary><h3>Can Soonish remind me at a certain time?</h3></summary><div class="a">
+        <p>Yes. Add a time when you type a task (<q>call doctor at 3pm</q>, <q>dentist fri 9:30am</q> or just <q>320p</q>), or tap <b>•••</b>, then <b>Change date</b> and <b>Set time</b>.</p>
+        <p>Then turn on <b>Settings → Nudges → Heads-up for timed tasks</b> and choose 15 minutes, 30 minutes or an hour before. You get one notification, even on a day off, and none if the task is already done.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>I finished something that wasn’t in today’s picks. Does it count?</h2>
-  <p>Yes. Anything you finish counts toward your daily goal, whether it’s one of today’s picks or something from the Scratchpad: the ring fills, nudges stop and the day’s little sun lights up. Everything also counts toward Progress and badges. Anything past your goal shows as <strong>+1</strong>, <strong>+2</strong>… on the ring.</p>
+  <section class="sec" id="days-off">
+    <h2 class="label">Days off</h2>
+    <div class="qs">
+      <details><summary><h3>How do I take a day off?</h3></summary><div class="a">
+        <p>At the top of Today, tap the umbrella and pick the day. Days off never break your streak, and the app stays quiet on them. To skip the same days every week, change <b>Active days</b> in Settings.</p>
+      </div></details>
+      <details><summary><h3>Can I take a day off after the fact?</h3></summary><div class="a">
+        <p>For yesterday, yes. If yesterday had nothing checked off and that would cost your week its Steady or Perfect week, Soonish asks the next morning if you’d like to count it as a day off. It only goes back one day.</p>
+        <p>To catch it the same day, keep <b>Day off reminder</b> on in Settings. If nothing’s checked off by your evening note’s time and your week is on the line, Soonish asks if you’re taking a day off, with a button to take it.</p>
+      </div></details>
+      <details><summary><h3>What is Need a minute?</h3></summary><div class="a">
+        <p>For when it’s all too much. Tap <b>Need a minute</b> on Today (or use its Lock Screen widget) and everything else hides. Choose three slow breaths, a 2-minute reset, or Clear my head, where you can write or say what’s on your mind.</p>
+        <p><b>Let it go</b> clears it away and saves nothing. <b>Keep it</b> saves it privately on your phone under Kept thoughts, which open with Face ID.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>I gave a task the wrong date.</h2>
-  <p>Tap <strong>•••</strong> on the task and choose <strong>Set a date</strong> (or <strong>Change date</strong>). This works on Today too: pick a later day and it leaves today’s list and waits for that day.</p>
+  <section class="sec" id="badges">
+    <h2 class="label">Badges</h2>
+    <div class="qs">
+      <details><summary><h3>How do badges work?</h3></summary><div class="a">
+        <p>You earn badges for Steady and Perfect weeks, your best week yet, going above and beyond, doing things you chose yourself, coming back after time away, focus time and milestones. There are once-a-year ones too, for New Year, St. Patrick’s Day, Halloween, Thanksgiving and each new season, and one for your first day off.</p>
+        <p>They never expire, and days off never cost you one. Find them in Wins: tap one to bring it to the front, and tap it again to see why you earned it.</p>
+      </div></details>
+      <details><summary><h3>Can I share a badge?</h3></summary><div class="a">
+        <p>Yes. Tap <b>Share</b> when you earn one, or open any badge in Wins and tap Share. It makes a picture of the badge and why you earned it, never your tasks, and you choose where it goes.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>How do I take a day off?</h2>
-  <p>At the top of Today, tap the umbrella (<strong>Take a day off</strong>) and pick the day. Days off never break your streak, and the app stays quiet on them. To skip the same days every week, change <strong>Active days</strong> in Settings.</p>
+  <section class="sec" id="plus">
+    <h2 class="label">Soonish Plus</h2>
+    <div class="qs">
+      <details><summary><h3>Is there an iPad, Mac or Apple Watch app?</h3></summary><div class="a">
+        <p>Not yet. Soonish is made for iPhone. With Soonish Plus, your one thing already shows on your Apple Watch in the Smart Stack. Apps for Apple Watch, iPad and Mac are on the way, and we’ll say so in the app’s update notes when each one is ready.</p>
+      </div></details>
+      <details><summary><h3>What is Soonish Plus?</h3></summary><div class="a">
+        <p>A few extras on top of Soonish, which stays free. They’re free for everyone during the beta, marked with a small Plus tag. Turn them on in <b>Settings → Soonish Plus</b>.</p>
+        <ul>
+          <li><b>Today on the Lock Screen and Dynamic Island.</b> It shows up when you open Soonish and today’s picks aren’t all done, and you can check them off right there. The first time, iOS asks to allow Live Activities.</li>
+          <li><b>Themes and app icons.</b> Calm colors (Sea glass, Dusk, Rosewood, Brick, Denim), clean ones (Ink, Pearl), brushed metals (Titanium, Gunmetal, Rose gold) and bold ones (Aurora and your own photo), each with a matching icon. Sunrise, the default, is free. Prefer just the color? Turn off Sky details.</li>
+          <li><b>Break it down.</b> On iPhone models with Apple Intelligence, three tiny first steps for a task that feels too big.</li>
+          <li><b>Your patterns.</b> After about a week, Wins notices when you get the most done, your strongest day and your longest run, and can offer to move your nudges or evening note to suit you.</li>
+          <li><b>StandBy.</b> With your iPhone charging on its side, Soonish’s small widget shows your day big.</li>
+          <li><b>Focus sounds.</b> Brown, pink or white noise under any Focus or Need a minute timer, even with the phone locked.</li>
+          <li><b>Add from your Mac.</b> See the next question.</li>
+        </ul>
+        <p>Tell us if they’re worth paying for: <b>Settings → Soonish Plus → Worth paying for? Tell us.</b></p>
+      </div></details>
+      <details><summary><h3>How do I add things from my Mac?</h3></summary><div class="a">
+        <p>With Add from your Mac, a list called Soonish in Apple’s Reminders becomes an inbox. Anything you put there moves into your Scratchpad.</p>
+        <ol>
+          <li>Turn on Reminders in iCloud on your iPhone and your Mac, with the same Apple Account on both.</li>
+          <li>In Soonish, go to <b>Settings → Soonish Plus → Add from your Mac</b> and allow Full Access to Reminders. Soonish makes the Soonish list for you, in iCloud.</li>
+          <li>Check the list sits under iCloud in Reminders, not “On My iPhone,” or it won’t reach your Mac.</li>
+          <li>On your Mac, add to the Soonish list, or say <q>Hey Siri, add call the dentist to my Soonish list.</q> Your Apple Watch and iPad work too.</li>
+          <li>Open Soonish on your iPhone. Each item lands in your Scratchpad with its day, time, notes and link.</li>
+        </ol>
+        <p>It’s a one-way inbox: once an item is in Soonish, it’s removed from Reminders. Subtasks, images, flags and tags don’t come across, since Apple doesn’t share them with other apps. If something doesn’t show up, give iCloud a minute, then switch away from Soonish and back.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>Can I take a day off after the fact?</h2>
-  <p>For yesterday, yes. If yesterday had nothing checked off and that would cost your week its Steady or Perfect week, Soonish asks the next morning if you’d like to count it as a day off. Tap <strong>Count it as a day off</strong> and the week keeps its badge. It only goes back one day, so a forgotten day gets grace but a stretch of days doesn’t. To catch it the same day, keep <strong>Day off reminder</strong> on in Settings: if nothing’s checked off by your end-of-day time and your week is on the line, Soonish asks if you’re taking a day off, with a button to take it.</p>
+  <section class="sec" id="look">
+    <h2 class="label">Look and nudges</h2>
+    <div class="qs">
+      <details><summary><h3>Why did the sky stop moving?</h3></summary><div class="a">
+        <p>Your iPhone is probably in Low Power Mode. Soonish holds its skies, water and backgrounds still then, to save battery, and they move again when it’s off. To keep a theme’s colors with nothing moving at all, turn off <b>Sky details</b> in Settings → Theme and app icon.</p>
+      </div></details>
+      <details><summary><h3>My widget is dark, but my Home Screen is light.</h3></summary><div class="a">
+        <p>The widget follows your phone’s light or dark mode, set in Settings → Display &amp; Brightness. If your iPhone is in dark mode but you’ve made just the Home Screen light, the widget stays dark, because apps can’t see that setting.</p>
+        <p>To fix it, open Soonish and go to <b>Settings → Light or dark</b>, then choose Light. Choose Match phone to go back.</p>
+      </div></details>
+      <details><summary><h3>The nudges are too much (or not enough).</h3></summary><div class="a">
+        <p>Change the times in Settings, or swipe one away to remove it. They always stop as soon as your goal is done today, and never come on days off or while a Focus timer is running.</p>
+      </div></details>
+    </div>
+  </section>
 
-  <h2>How do I put a task on a certain day?</h2>
-  <p>Just type the day anywhere in the line: “call mom <strong>tomorrow</strong>”, “dentist <strong>fri</strong>”, “rent <strong>oct 30</strong>” or “<strong>10/30</strong>”. The task waits in the Scratchpad and joins today’s picks that morning. “<strong>this weekend</strong>” puts it on Saturday, and “<strong>next fri</strong>” means Friday of next week. You can also tap <strong>•••</strong> on a task and choose <strong>Set a date</strong>.</p>
+  <section class="sec" id="your-data">
+    <h2 class="label">Your data</h2>
+    <div class="qs">
+      <details><summary><h3>Where is my data?</h3></summary><div class="a">
+        <p>On your iPhone. There’s no account, and nothing is sent to us.</p>
+        <p>Soonish also makes one backup of its own, once a day: a file in a Soonish folder in your iCloud Drive. If you delete Soonish and install it again, it offers to bring your list back from that file. It holds your tasks, history, badges and settings, but not files or photos attached to tasks, or your theme photo. Turn it off or save a copy anywhere in <b>Settings → Backup and restore</b>.</p>
+        <p>Your iPhone’s own iCloud Backup is separate. It includes everything in Soonish, attachments too, but it’s only used when you set up a new or erased iPhone, not when you reinstall one app. So keep your own copy of any attachment you can’t lose.</p>
+      </div></details>
+      <details><summary><h3>How do I erase everything and start over?</h3></summary><div class="a">
+        <p>In <b>Settings → Backup and restore</b>, scroll to the bottom and tap <b>Erase everything and start fresh</b>. It clears your list, history, badges, settings, kept thoughts, attached files and theme photo, and Soonish starts like new.</p>
+        <p>Your backups in iCloud Drive and any copies you saved aren’t touched, so you can bring one back afterward. Attached files and the theme photo aren’t in backups, so those can’t come back.</p>
+      </div></details>
+    </div>
+  </section>
+</div>
 
-  <h2>What’s the difference between a day and a deadline?</h2>
-  <p>A plain date (“fri”) is the day you’ll do it, so it stays out of today’s picks until then. Add “<strong>by</strong>” or “<strong>due</strong>” (“by fri”) and it’s a deadline instead: Soonish may pick it earlier when there’s room. You can switch between the two under <strong>Set a date</strong> or in Edit.</p>
+<div class="close">
+  <div class="wrap in">
+    <h2>Still stuck?</h2>
+    <p>Email <a class="email" href="mailto:support@getsoonish.co">support@getsoonish.co</a> and tell us what happened. A screenshot helps.</p>
+    <footer>
+      Soonish is made by Small Wins Studio LLC. <a href="./">Home</a>, <a href="features.html">Features</a>, <a href="privacy.html">Privacy</a>.
+      <p class="tm">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, iCloud Drive, Apple Intelligence, Dynamic Island, StandBy, Shortcuts, TestFlight and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
+    </footer>
+  </div>
+</div>
 
-  <h2>Can tasks repeat?</h2>
-  <p>Yes. Type “<strong>every day</strong>”, “<strong>daily</strong>”, “<strong>every weekday</strong>”, “<strong>every mon and thu</strong>”, “<strong>on tuesdays</strong>”, “<strong>weekly</strong>” or “<strong>each day this week</strong>”, or tap <strong>•••</strong> and choose <strong>Repeat</strong> to pick the days and an optional last day. Each repeat joins today’s picks on its day. Check it off and the next one waits for its day. Miss a day and it simply moves on: nothing piles up and nothing counts against you.</p>
+<script>
+(() => {
+  const band = document.querySelector('.skyline'), sun = document.getElementById('sun'), trail = document.getElementById('trail');
+  const t = (9 * 60 + 41 - 360) / 960, P0 = { x: -10, y: 200 }, C = { x: 500, y: -30 }, P1 = { x: 1010, y: 200 };
+  const pt = s => { const u = 1 - s; return { x: u*u*P0.x + 2*u*s*C.x + s*s*P1.x, y: u*u*P0.y + 2*u*s*C.y + s*s*P1.y }; };
+  const draw = () => { const p = pt(t); sun.style.left = p.x / 1000 * band.clientWidth + 'px'; sun.style.top = p.y / 200 * band.clientHeight + 'px';
+    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } trail.setAttribute('d', d); };
+  draw(); addEventListener('resize', draw);
 
-  <h2>Can Soonish remind me at a certain time?</h2>
-  <p>Yes. Add a time when you type a task: “call doctor <strong>at 3pm</strong>”, “dentist fri <strong>9:30am</strong>” or just “<strong>320p</strong>”. You can also tap <strong>•••</strong>, then <strong>Change date</strong> and <strong>Set time</strong>. Then turn on <strong>Settings → Heads-up for timed tasks</strong> and choose 15 minutes, 30 minutes or an hour before. You get one notification, even on a day off, and none if the task is already done.</p>
+  // A topic tile jumps to its group and opens its first question.
+  document.querySelectorAll('.jump .tile').forEach(t => t.addEventListener('click', () => {
+    const d = document.querySelector(t.getAttribute('href') + ' details'); if (d) d.open = true;
+  }));
 
-  <h2>How does Soonish pick for me?</h2>
-  <p>Anything due today comes first, then tasks you’ve marked <strong>Important</strong>, then what’s due soon and how long things have been waiting. A task set for a later day waits for that day, and a deadline more than a week away waits until it’s closer. It never gives you more than one task marked Heavy at once (unless two are due today). Each pick shows a small reason. Don’t like one? Swap it out, and use “Back to Soonish’s picks” to undo.</p>
-  <p>Done with today and want more? <strong>Keep going</strong> brings the next thing: anything left for today, then what’s coming soonest (tomorrow’s first, then the rest of the week), then things with no date. The Scratchpad’s <strong>Up next</strong> always shows the same thing, so they never disagree.</p>
-  <h2>Why only one thing a day?</h2>
-  <p>Starting is the hardest part, so Soonish starts you with one. Once one a day has become a habit, it asks if you’d like two a day, then three. You can change it any time in <strong>Settings → Your daily goal</strong>, and doing more is always welcome: it all counts. A day with nothing on your list is a quiet day, and it never breaks your streak.</p>
+  // Copy the email address; if the clipboard is refused, select it instead.
+  const btn = document.getElementById('copy'), email = document.getElementById('email');
+  btn.addEventListener('click', e => { e.preventDefault();
+    const done = () => { btn.textContent = 'Copied'; setTimeout(() => btn.textContent = 'Copy', 1800); };
+    const pick = () => { const r = document.createRange(); r.selectNodeContents(email); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard) navigator.clipboard.writeText(email.textContent).then(done, pick); else pick();
+  });
+})();
+</script>
 
-  <h2>How do badges work?</h2>
-  <p>You earn badges for Steady and Perfect weeks, your best week yet, going above and beyond, doing things you chose yourself, coming back after time away, focus time and milestones. There are once-a-year ones too, for New Year, St. Patrick’s Day, Halloween, Thanksgiving and each new season, and one for your first day off. They never expire, and days off never cost you one. Find them on <strong>Progress</strong>: tap one to bring it to the front, and tap it again to see why you earned it.</p>
-
-  <h2>Can I share a badge?</h2>
-  <p>Yes. Tap <strong>Share</strong> when you earn one, or open any badge on <strong>Progress</strong> and tap Share. It makes a picture of the badge and why you earned it, never your tasks, and you choose where it goes.</p>
-
-  <h2>How do I add things from my Mac?</h2>
-  <p>With <strong>Add from your Mac</strong> (Soonish Plus), a list called <strong>Soonish</strong> in Apple’s Reminders becomes an inbox. Anything you put there moves into your Scratchpad.</p>
-  <ol>
-    <li>Turn on <strong>Reminders</strong> in iCloud on your iPhone and your Mac (Settings or System Settings → your name → iCloud), with the same Apple Account on both.</li>
-    <li>In Soonish, go to <strong>Settings → Soonish Plus → Add from your Mac</strong> and allow Full Access to Reminders. Soonish makes the Soonish list.</li>
-    <li>Check that the list sits under <strong>iCloud</strong> in the Reminders app, not “On My iPhone”, or it won’t reach your Mac.</li>
-    <li>On your Mac, add to the Soonish list in Reminders, or say “Hey Siri, add call the dentist to my Soonish list”. Your Apple Watch and iPad work too.</li>
-    <li>Open Soonish on your iPhone. Each item lands in your Scratchpad, read like anything you type: “pay rent friday” waits for Friday, and a date or time set in Reminders carries over. Its notes become the task’s note, and a link in the URL field becomes the task’s link, so you’ll find both when you open the task.</li>
-  </ol>
-  <p>It’s a one-way inbox: once an item is safely in Soonish, it’s removed from Reminders, so the Soonish list stays empty and nothing shows up again in Calendar. From there, you check it off, change its date or edit it in Soonish. If something doesn’t show up, give iCloud a minute, then switch away from Soonish and back. Subtasks, images, flags and tags don’t come across, since Apple doesn’t share them with other apps, so keep anything that needs those in another Reminders list. A link written inside the notes comes along as part of the note. Nothing is ever sent to us; Reminders syncs through your own iCloud.</p>
-
-  <h2>What is Soonish Plus?</h2>
-  <p>A few extras on top of Soonish, which stays free. They’re free for everyone during the beta and marked with a small <strong>Plus</strong> tag. Turn them on in <strong>Settings → Soonish Plus</strong>:</p>
-  <ul>
-    <li><strong>Today on the Lock Screen and Dynamic Island.</strong> It shows up on its own whenever you open Soonish and today’s picks aren’t all done, and you can check them off right there. It goes away once your picks are done. The first time, iOS asks to allow Live Activities from Soonish.</li>
-    <li><strong>Focus sounds.</strong> Brown, pink or white noise under any Focus or Need a minute timer. It keeps going with the phone locked and stops when the timer ends.</li>
-    <li><strong>Themes and app icons.</strong> Calm colors (Sea glass, Dusk, Rosewood, Brick, Denim), clean ones (Ink, Pearl) and bold ones (Aurora, Holo and your own photo), each with a matching icon and its own color for things you’ve done. Sunrise, the default, is free.</li>
-    <li><strong>StandBy.</strong> With your iPhone charging on its side, Soonish’s small widget shows your day big: your picks, or your ring.</li>
-    <li><strong>Your patterns.</strong> After about a week, Progress notices when you get the most done, your strongest day, your best day and longest run, and offers to move your nudges or end-of-day note to suit you. A short recap arrives on the 1st of each month, and after about six weeks you can see how your patterns have changed.</li>
-    <li><strong>Add from your Mac.</strong> Add to a Soonish list in Apple’s Reminders on your Mac or Apple Watch, or with Siri, and it moves into your Scratchpad (see above).</li>
-    <li><strong>Break it down.</strong> On iPhone models with Apple Intelligence, three tiny first steps for a task that feels too big, worked out on your phone.</li>
-  </ul>
-  <p>Everything is worked out on your phone. Tell us if they’re worth paying for: <strong>Settings → Soonish Plus → Worth paying for? Tell us</strong>.</p>
-
-  <h2>What is Need a minute?</h2>
-  <p>For when it’s all too much. Tap <strong>Need a minute</strong> on Today (or use its Lock Screen widget) and everything else hides. Pick one tiny step: a 2-minute reset, a short timer on one task, three slow breaths or <strong>Clear my head</strong>, where you can write or say what’s on your mind. <strong>Let it go</strong> clears it away and saves nothing; <strong>Keep it</strong> saves it privately on your phone under Kept thoughts, which open with Face ID.</p>
-
-  <h2>My widget is dark, but my Home Screen is light.</h2>
-  <p>The Soonish widget follows your phone’s light or dark mode, set in <strong>Settings → Display &amp; Brightness</strong>. If your iPhone is in dark mode but you’ve made just the Home Screen light (touch and hold the Home Screen, then <strong>Edit → Customize</strong>), the widget stays dark, because apps can’t see that setting. To fix it, open Soonish and go to <strong>Settings → Look</strong>, then choose <strong>Light</strong>. The widget will stay light whatever your phone is set to. Choose <strong>Match phone</strong> to go back.</p>
-
-  <h2>The nudges are too much (or not enough).</h2>
-  <p>Change the times in Settings, or swipe one away to remove it. They always stop as soon as your goal is done today, and never come on days off or while a Focus timer is running.</p>
-
-  <footer>Soonish is made by Small Wins Studio LLC · <a href="features.html">Features</a> · <a href="privacy.html">Privacy</a>
-    <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
-  </footer>
-</main>
 </body>
 </html>

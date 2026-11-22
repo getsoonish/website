@@ -3,20 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Soonish Privacy Policy</title>
   <meta name="description" content="Soonish collects nothing. What stays on your iPhone, what goes to your own iCloud, and what each permission is for.">
   <link rel="canonical" href="https://getsoonish.co/privacy.html">
-  <link rel="icon" href="logo.svg?v=20261112" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261112">
-  <link rel="stylesheet" href="style.css?v=20261115c">
+  <link rel="icon" href="favicon.png?v=20261122b" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=20261122b">
+  <link rel="stylesheet" href="page.css?v=20261122b">
 </head>
 <body>
-<main>
-  <nav><a href="./">Soonish</a><a href="features.html">Features</a><a href="support.html">Support</a></nav>
+<div class="top">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="./"><img src="images/icon.png?v=20261122b" alt="" width="32" height="32">Soonish</a>
+      <nav><a href="./">Home</a><a href="features.html">Features</a><a href="support.html">Support</a></nav>
+    </header>
+  </div>
+</div>
+<main class="wrap doc">
 
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated November 14, 2026</p>
+  <p class="updated">Last updated November 21, 2026</p>
   <p>Soonish is made by Small Wins Studio LLC, which is responsible for this policy and for the app.</p>
 
   <div class="card">
@@ -40,12 +47,14 @@
   <h2>Permissions the app may ask for</h2>
   <p>Each one is optional, and you can turn it off at any time in the iPhone’s Settings app.</p>
   <ul>
-    <li><strong>Calendar:</strong> to show today’s events next to your picks for the day. Soonish only reads your calendar; it never changes it, and the events never leave your phone.</li>
+    <li><strong>Calendar:</strong> to show today’s events next to your picks for the day. Tapping an event opens Apple’s own event screen, where you can view or edit it; Soonish never changes an event on its own, and your events never leave your phone.</li>
     <li><strong>Reminders:</strong> to show the reminders due today from the lists you choose, and to mark one done when you check it off in Soonish. With Add from your Mac (Soonish Plus) turned on, Soonish also makes a list called Soonish in your Reminders, moves anything you add to it into your Scratchpad, and then removes it from that list. Soonish changes nothing else, and your reminders are never sent to us; they sync only through your own iCloud, as Reminders always does.</li>
     <li><strong>Microphone and speech recognition:</strong> to turn what you say into tasks. Speech is recognized on your iPhone, and the audio isn’t saved or sent anywhere. iOS shows its standard message about speech being sent to Apple; Soonish only uses on-device recognition, and turns dictation off where that isn’t available.</li>
     <li><strong>Notifications:</strong> for the gentle nudges and the end-of-day note. They’re scheduled on your phone.</li>
     <li><strong>Camera:</strong> to take a photo of a written list (Snap a list). The text is read on your iPhone, and the photo isn’t kept.</li>
-    <li><strong>Photos:</strong> when you choose a photo yourself, to attach to a task, read a list from, or use as the background of the Your photo theme. Soonish only gets the photos you pick, and keeps them on your iPhone.</li>
+    <li><strong>Files you choose:</strong> to read a list from a text, Markdown, CSV or PDF file you pick in the Files picker (A list from a file). It’s read on your iPhone and isn’t kept.</li>
+    <li><strong>Photos:</strong> when you choose a photo yourself, to attach to a task, read a list from, or use as the background of the Your photo theme. For that theme, your iPhone finds the photo’s main subject, such as a face or a pet, so the widget’s window is framed around it; nothing about the photo is kept or sent anywhere. Soonish only gets the photos you pick, and keeps them on your iPhone.</li>
+    <li><strong>Saving a badge picture:</strong> if you choose Save Image when sharing a badge, iOS asks to add it to your photos. Soonish can’t see your library.</li>
     <li><strong>Face ID:</strong> to keep your kept thoughts private. Apple handles the check; Soonish never sees your face data.</li>
   </ul>
 
@@ -65,6 +74,7 @@
   <p>Because everything lives on your phone, you’re in control of it:</p>
   <ul>
     <li>Delete a task, a kept thought or an attachment in the app, and it’s gone from your phone.</li>
+    <li>To erase everything at once without deleting the app, use Soonish &rarr; Settings &rarr; Backup and restore &rarr; Erase everything and start fresh.</li>
     <li>Delete the Soonish app to remove everything it stored on your iPhone.</li>
     <li>To remove Soonish’s backup, turn it off in Soonish &rarr; Settings &rarr; Backup and restore, then delete the Soonish folder in the Files app &rarr; iCloud Drive.</li>
   </ul>
@@ -83,10 +93,9 @@
   <p>If this policy ever changes, for example if a future version adds optional sync, we’ll update this page and the date above before the change ships.</p>
 
   <h2>Contact</h2>
-  <p>Questions? Email <a href="mailto:getsoonishapp@gmail.com">getsoonishapp@gmail.com</a>.</p>
-
-  <footer>Soonish is made by Small Wins Studio LLC · <a href="features.html">Features</a> · <a href="support.html">Support</a>
-    <p class="credits">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, Apple Intelligence and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
+  <p>Questions? Email <a href="mailto:support@getsoonish.co">support@getsoonish.co</a>.</p>
+  <footer>Soonish is made by Small Wins Studio LLC. <a href="./">Home</a>, <a href="features.html">Features</a>, <a href="support.html">Support</a>, <a href="privacy.html">Privacy</a>.
+    <p class="tm">Apple, iPhone, iPad, Mac, Apple Watch, Siri, Face ID, iCloud, iCloud Drive, Apple Intelligence, Dynamic Island, StandBy, Shortcuts, TestFlight and App Store are trademarks of Apple Inc. Soonish is not made by or affiliated with Apple.</p>
   </footer>
 </main>
 </body>

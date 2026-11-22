@@ -1,0 +1,47 @@
+/* Plain text pages (privacy, the sign-up thank-you) in the same look as Home, Features and
+   Support: the morning sky at the top, the same header, Bricolage headings and one readable column. */
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Heading.ttf") format("truetype"); font-weight: 400 650; font-display: swap; }
+@font-face { font-family: "Bricolage Soonish"; src: url("fonts/BricolageGrotesqueSoonish-Display.ttf") format("truetype"); font-weight: 651 900; font-display: swap; }
+:root {
+  --ink: #2A2018;
+  --ink2: #655850;
+  --accent: #9A4218;
+  --apricot: #D4692F;
+  --page: #F6ECE0;
+  --rule: rgba(101, 88, 80, .16);
+  --tint: rgba(101, 88, 80, .08);
+  --display: "Bricolage Soonish", "Avenir Next", ui-rounded, system-ui, sans-serif;
+  --text: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--text); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: var(--accent); }
+:focus-visible { outline: 3px solid #2A2018; outline-offset: 3px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+.top { margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+  background: linear-gradient(180deg, #E6B98C 0%, #EBCBA6 30%, #F1DCC3 60%, var(--page) 100%); }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding-block: 18px 70px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--ink); text-decoration: none; }
+.brand img { width: 32px; height: 32px; border-radius: 7.5px; display: block; box-shadow: 0 1px 2px rgba(80, 40, 10, .18); }
+.topbar nav { display: flex; gap: 22px; font-weight: 600; }
+.topbar nav a { color: var(--ink); text-decoration: none; opacity: .85; display: inline-block; padding-block: 11px; }
+
+.doc { max-width: 720px; padding-block: 10px 70px; }
+.doc h1 { font-family: var(--display); font-weight: 800; font-size: clamp(40px, 6vw, 64px); line-height: 1; letter-spacing: -0.03em; margin: 0 0 14px; text-wrap: balance; }
+.doc h2 { font-family: var(--display); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; margin: 40px 0 10px; }
+.doc p, .doc li { color: var(--ink2); }
+.doc strong { color: var(--ink); font-weight: 650; }
+.doc ul { padding-left: 22px; display: grid; gap: 10px; }
+.doc .updated { font-size: 14px; margin-top: 0; }
+.doc .card { background: var(--tint); border: 1px solid rgba(101, 88, 80, .1); border-radius: 18px; padding: 4px 22px; margin: 26px 0; }
+
+footer { border-top: 1px solid var(--rule); padding-block: 26px 44px; font-size: 13px; color: var(--ink2); }
+footer a { color: var(--ink2); display: inline-block; padding-block: 14px; }
+footer .tm { margin: 4px 0 0; max-width: 70ch; }
+@media (max-width: 760px) { .topbar nav { gap: 14px; font-size: 15px; } }
