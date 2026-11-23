@@ -577,7 +577,7 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
       v.loop = false; v.removeAttribute('loop'); v.removeAttribute('controls');
       const b = document.createElement('button'); b.type = 'button'; b.className = 'clipbtn';
       v.closest('.phone').appendChild(b); v._btn = b; set(v, 'play');
-      const toggle = () => { const g = groupOf(v); g.auto = false; if (v.paused) start(g, v); else v.pause(); };
+      const toggle = () => { const g = groupOf(v); g.auto = false; g.i = g.vids.indexOf(v); if (v.paused) start(g, v); else v.pause(); };
       b.addEventListener('click', toggle); v.addEventListener('click', toggle);
       v.addEventListener('play', () => set(v, 'pause'));
       v.addEventListener('pause', () => set(v, v.ended ? 'replay' : 'play'));
@@ -587,11 +587,23 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
         const g = groupOf(v), k = g.vids.indexOf(v);
         if (!g.auto || g.i !== k || v._handed) return;
         v._handed = true;
-        if (k + 1 < g.vids.length) { g.i = k + 1; start(g, g.vids[g.i], true); } else g.auto = false;
+        // After the last clip, the row starts over from the first (owner, Nov 23, 2026: clips replay
+        // instead of stopping on an odd last frame).
+        if (g.vids.length > 1) { g.i = (k + 1) % g.vids.length; start(g, g.vids[g.i], true); }
       };
       v.addEventListener('timeupdate', () => { if (v.duration && v.duration - v.currentTime < 1.4) handoff(); });
       v.addEventListener('play', () => { if (v.currentTime < 0.5) v._handed = false; });
-      v.addEventListener('ended', () => { set(v, 'replay'); handoff(); });
+      v.addEventListener('ended', () => {
+        handoff();
+        const g = groupOf(v);
+        // A clip that has handed off goes back to its first frame, so no row rests on a mid-scene ending.
+        if (g.vids[g.i] !== v || g.vids.length > 1 && g.auto) { v.currentTime = 0; set(v, 'play'); return; }
+        // A clip on its own (or one played by hand) plays again after a short beat, while it's on screen.
+        setTimeout(() => {
+          if (!v.ended) return;
+          if (g.visible) start(g, v); else { g.held = true; g.held_v = v; }
+        }, 600);
+      });
     });
     if (!('IntersectionObserver' in window)) return;
     const near = new IntersectionObserver(es => es.forEach(e => {
@@ -601,6 +613,7 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
     }), { rootMargin: '600px 0px' });
     const seen = new IntersectionObserver(es => es.forEach(e => {
       const g = groups.find(g => g.el === e.target); if (!g) return;
+      g.visible = e.isIntersecting;
       if (e.isIntersecting) {
         if (reduceClips) return;
         if (!g.started) { g.started = true; g.auto = true; g.i = 0; start(g, g.vids[0]); }
