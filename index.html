@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
+  <meta name="darkreader-lock">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Soonish, an ADHD-friendly to-do app for iPhone</title>
   <link rel="canonical" href="https://getsoonish.co/">
@@ -77,7 +78,7 @@ a { color: var(--accent); }
 .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .22; }
 #sun { position: absolute; left: 0; top: 0; width: 170px; height: 170px; margin: -85px 0 0 -85px; will-change: transform; }
 #sun svg { position: relative; }
-#sun .halo { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, rgba(255, 233, 184, .9), rgba(247, 201, 135, .3) 45%, transparent 70%); transform: scale(1); }
+#sun .halo { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle closest-side, rgba(255, 233, 184, 0) 35%, rgba(255, 233, 184, .7) 36.5%, rgba(247, 201, 135, .28) 58%, transparent 88%); transform: scale(1); }
 #sun.swell .halo { animation: swell 2.4s ease-out; }
 @keyframes swell { 0% { transform: scale(1); } 22% { transform: scale(2.1); opacity: 1; } 100% { transform: scale(1); } }
 
@@ -255,15 +256,15 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
   </div>
   <div class="skyband" aria-hidden="true">
     <svg class="arcsvg" viewBox="0 0 1000 300" preserveAspectRatio="none">
-      <path d="M -10 300 Q 500 -40 1010 300" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-      <path id="trail" d="" fill="none" stroke="#E9A24A" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="ahead" d="M -10 300 Q 500 -40 1010 300" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="trail" d="" fill="none" stroke="#E88C29" stroke-opacity=".95" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
     </svg>
     <span class="lab l6">6 AM</span><span class="lab l10">10 PM</span>
     <div id="sun">
       <div class="halo"></div>
       <svg viewBox="-85 -85 170 170" width="170" height="170">
-        <defs><radialGradient id="disc" cx=".45" cy=".4" r=".62"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".55" stop-color="#FFE9B8"/><stop offset="1" stop-color="#F2C066"/></radialGradient></defs>
-        <circle r="30" fill="url(#disc)" stroke="#FFF3D6" stroke-width="2"/>
+        <defs><radialGradient id="disc" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="#FFF8E2"/><stop offset=".25" stop-color="#FFF8E2"/><stop offset="1" stop-color="#F5B03F"/></radialGradient><radialGradient id="heart" cx=".5" cy=".45" r=".36"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
+        <circle r="30" fill="url(#disc)"/><circle r="30" fill="url(#heart)"/><circle r="29.25" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="1.5"/>
       </svg>
     </div>
     <div class="horizon"></div>
@@ -339,7 +340,7 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
         <p><b>Check it off and the sun rises</b> on its path from 6 AM to 10 PM. Your calendar and timed reminders sit on that path too.</p>
         <p>When one a day feels easy, it asks if you’d like two. Never more than three.</p>
       </div>
-      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise.jpg?v=20261122b" aria-label="Today: Call the dentist is checked off, a small light flies up and the sun rises with its rays."><source src="clips/sunrise.mp4?v=20261122b" type="video/mp4"></video></figure>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise.jpg?v=20261126d" aria-label="Today: Call the dentist is checked off, a small light flies up and the sun rises with its rays."><source src="clips/sunrise.mp4?v=20261126d" type="video/mp4"></video></figure>
     </div>
   </section>
 
@@ -350,8 +351,8 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
         <p>Not feeling today’s pick? Trade it for another, and undo if you change your mind.</p>
         <p>Done already? You don’t have to stop. One more, then another, as many as you like. It all counts, and the sun notices.</p>
         <div class="duo" data-clips>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/swap-sun.jpg?v=20261122b" aria-label="Today: Call the dentist is swapped for Email Sam about Friday. Email Sam is checked off, a small light flies up, and the sun rises with its rays."><source src="clips/swap-sun.mp4?v=20261122b" type="video/mp4"></video><figcaption>Swap it.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/keep-going.jpg?v=20261122b" aria-label="Keep going is tapped and Up next brings Call the dentist. It's checked off, and Today says One more done. The sun noticed."><source src="clips/keep-going.mp4?v=20261122b" type="video/mp4"></video><figcaption>Or keep going.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/swap-sun.jpg?v=20261126e" aria-label="Today: Call the dentist is swapped for Email Sam about Friday. Email Sam is checked off, a small light flies up, and the sun rises with its rays."><source src="clips/swap-sun.mp4?v=20261126e" type="video/mp4"></video><figcaption>Swap it.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/keep-going.jpg?v=20261126e" aria-label="Call the dentist is checked off and the sun rises. Keep going brings Dentist checkup, it’s checked off, and Today says One more done. The sun noticed. Then Up next brings Call mom."><source src="clips/keep-going.mp4?v=20261126e" type="video/mp4"></video><figcaption>Or keep going.</figcaption></figure>
         </div>
       </div>
     </section>
@@ -365,7 +366,7 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
         <p class="typed"><span>haircut <em>tuesday at noon</em></span><span>pay bills <em>friday</em></span><span>water plants <em>every sunday</em></span></p>
         <p>Anything without a date sorts itself too: calls with calls, errands with errands.</p>
       </div>
-      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/dates.jpg?v=20261122b" aria-label="The Scratchpad: Haircut Tuesday at noon is typed and lands under This month with Tue 12pm in the margin."><source src="clips/dates.mp4?v=20261122b" type="video/mp4"></video></figure>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/dates.jpg?v=20261126d" aria-label="The Scratchpad: Pay rent friday is typed, the line under it says Added to Tomorrow: Pay rent, for Friday, Nov 27, and Pay rent glows in the Tomorrow folder."><source src="clips/dates.mp4?v=20261126d" type="video/mp4"></video></figure>
     </div>
   </section>
 </div>
@@ -381,7 +382,7 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
           <p>One tap and the day turns to night. Everything else is hidden.</p>
           <p><b>Three slow breaths</b> with the moon over a lake, <b>a 2-minute reset</b>, or <b>Clear my head</b>, where you write it all out and let it go, or keep it locked away.</p>
         </div>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261123" aria-label="Need a minute: Today fades to night and the moon rises over the water. Three slow breaths: Breathe in, Hold, Breathe out."><source src="clips/need-a-minute.mp4?v=20261123" type="video/mp4"></video></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261126e" aria-label="Need a minute: Today’s sun sets, the moon rises over the water, and Three slow breaths begins: Breathe in, Breathe out, with the moonlight shimmering on the lake."><source src="clips/need-a-minute.mp4?v=20261126e" type="video/mp4"></video></figure>
       </div>
     </section>
   </div>
@@ -396,7 +397,7 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
           <h2>Take a day off. Your streak is safe.</h2>
           <p>Tap the umbrella, pick the day, and a wave rolls in. No nudges, nothing picked, and your week stays whole. Forgot to mark a quiet day? If your week is on the line, Soonish asks the next morning.</p>
         </div>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/day-off.jpg?v=20261122b" aria-label="Take a day off: the umbrella opens on a beach and a small wave rolls in. Tomorrow is tapped, a bigger wave washes up to the chair and draws back, and it says Tomorrow's yours."><source src="clips/day-off.mp4?v=20261122b" type="video/mp4"></video></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/day-off.jpg?v=20261126e" aria-label="Take a day off: the umbrella opens on a beach. Today is tapped, a wave washes up, and it says Today’s yours. Today then shows the beach and You’re off today."><source src="clips/day-off.mp4?v=20261126e" type="video/mp4"></video></figure>
       </div>
     </section>
   </div>
@@ -410,9 +411,9 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
         <h2>Feel every win.</h2>
         <p>Badges for steady weeks, focus hours and fresh starts, each with its own moment, kept on a shelf of constellations. Wins counts everything you’ve done since you started, and it only goes up.</p>
         <div class="trio" data-clips data-rate="1.2">
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise-badge.jpg?v=20261122b" aria-label="The one thing is checked off, the sun rises, then a Steady week badge arrives with the sun rising behind it."><source src="clips/sunrise-badge.mp4?v=20261122b" type="video/mp4"></video><figcaption>A Steady week.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/shelf.jpg?v=20261123" aria-label="Wins to Your accomplishments: the sun sets into a night sky of constellations. Milestones is tapped, and the 50 things done badge opens while lanterns rise and spell 50."><source src="clips/shelf.mp4?v=20261123" type="video/mp4"></video><figcaption>Your accomplishments.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/progress.jpg?v=20261123" aria-label="Wins: the total counts up from 69 to 78, and this week's bar climbs by nine."><source src="clips/progress.mp4?v=20261123" type="video/mp4"></video><figcaption>Wins only go up.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise-badge.jpg?v=20261126e" aria-label="The one thing is checked off, the sun rises, then a Steady week badge arrives with the sun rising behind it."><source src="clips/sunrise-badge.mp4?v=20261126e" type="video/mp4"></video><figcaption>A Steady week.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/shelf.jpg?v=20261126e" aria-label="Wins to Your accomplishments: the sun sets into a night sky of constellations. Milestones is tapped, and the 50 things done badge opens while lanterns rise and spell 50."><source src="clips/shelf.mp4?v=20261126e" type="video/mp4"></video><figcaption>Your accomplishments.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/progress.jpg?v=20261126d" aria-label="Wins: the total counts up from 69 to 78, and this week's bar climbs by nine."><source src="clips/progress.mp4?v=20261126d" type="video/mp4"></video><figcaption>Wins only go up.</figcaption></figure>
         </div>
       </div>
     </section>
@@ -428,9 +429,9 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
         <h2 style="color:#FFF3E0">A little more, if you want it.</h2>
         <p>Everything above is free, with no limits. Plus adds a few extras on top: tiny first steps for a task that feels too big, the patterns in how you get things done, and themes that change the whole sky.</p>
         <div class="trio" data-clips data-rate="1.2">
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/break-it-down.jpg?v=20261122b" aria-label="Break it down from Today: Call the dentist becomes three small first steps and one is swapped for another. On Today, each step is checked off in turn until All 3 steps done, then Call the dentist is checked off and the sun rises."><source src="clips/break-it-down.mp4?v=20261122b" type="video/mp4"></video><figcaption>Break it down, on iPhone models with Apple Intelligence.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/patterns.jpg?v=20261122b" aria-label="Your patterns on Wins, then See all your patterns: your longest run, a morning finisher, your best day, A minute helps you, Calls are your thing, and An early start keeps you going, each with its own picture."><source src="clips/patterns.mp4?v=20261122b" type="video/mp4"></video><figcaption>Your patterns.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/themes.jpg?v=20261122b" aria-label="Today in nine themes: Sunrise, Sea glass, Dusk, Rosewood, Brick, Denim, Titanium, Aurora, and Your photo with a sandy path through the dunes to the sea."><source src="clips/themes.mp4?v=20261122b" type="video/mp4"></video><figcaption>Themes, each with its own sky. Prefer just the color? Turn off sky details.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/break-it-down.jpg?v=20261126e" aria-label="Break it down from Today: Call the dentist becomes three small first steps. On Today, each step is checked off with Step done, then Call the dentist is checked off and the sun rises."><source src="clips/break-it-down.mp4?v=20261126e" type="video/mp4"></video><figcaption>Break it down, on iPhone models with Apple Intelligence.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/patterns.jpg?v=20261126e" aria-label="Your patterns on Wins: You’re a morning finisher. See why shows when you finish things, hour by hour, then See all your patterns: your longest run, A minute helps you, and Calls are your thing."><source src="clips/patterns.mp4?v=20261126e" type="video/mp4"></video><figcaption>Your patterns.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/themes.jpg?v=20261126e" aria-label="Today in different themes, calm and bold, then Your photo with a sandy path through the dunes, where Call the dentist is checked off and the sun rises."><source src="clips/themes.mp4?v=20261126e" type="video/mp4"></video><figcaption>13 themes in all, each with its own sky: calm colors, clean and professional ones, brushed metals and bold ones like your own photo. Prefer just the color? Turn off sky details.</figcaption></figure>
         </div>
         <p class="also-line">Also in Plus: Today on your Lock Screen, StandBy, focus sounds, adding from your Mac and matching app icons. <a href="features.html#plus">See all of Plus</a></p>
       </div>
@@ -478,7 +479,7 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
     const x = p.x / 1000 * w, top = p.y / 300 * h, y = h + (top - h) * rise;
     sun.style.transform = `translate(${x}px, ${y}px)`;
     let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); }
-    trail.setAttribute('d', d);
+    trail.setAttribute('d', d); { const ah = document.getElementById('ahead'); if (ah) { let a = ''; for (let i = 0; i <= 30; i++) { const q = pt(t + (1 - t) * i / 30); a += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } ah.setAttribute('d', a); } }
   }
   function animate(to, ms, done) {
     if (reduce) { rise = to; draw(); done && done(); return; }
@@ -554,6 +555,10 @@ footer .tm { margin: 4px 0 0; max-width: 70ch; }
     };
     vids.forEach(v => {
       v.loop = false; v.removeAttribute('loop'); v.removeAttribute('controls');
+      // Safari drops the still image when a clip starts, before its first frame is ready, and showed
+      // the dark player behind it (owner, Nov 26, 2026: clips flashed black as they started). The
+      // still is the player's background too, so that moment shows the still instead.
+      if (v.poster) { v.style.backgroundImage = 'url("' + v.poster + '")'; v.style.backgroundSize = 'cover'; v.style.backgroundPosition = 'center'; }
       const b = document.createElement('button'); b.type = 'button'; b.className = 'clipbtn';
       v.closest('.phone').appendChild(b); v._btn = b; set(v, 'play');
       const toggle = () => { const g = groupOf(v); g.auto = false; g.i = g.vids.indexOf(v); if (v.paused) start(g, v); else v.pause(); };

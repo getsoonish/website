@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
+  <meta name="darkreader-lock">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>What Soonish can do</title>
   <link rel="canonical" href="https://getsoonish.co/features.html">
@@ -31,9 +32,10 @@ img { max-width: 100%; }
 </head>
 <body>
 <style>
-/* The features page, in the home page's look: the same sky, type and colors. The sections work
-   like the Scratchpad's folders: one is open at a time, starting with Adding, and each brings its
-   own sky (night for hard days, evening for Plus). Inside, a ruled margin holds the section's
+/* The features page, in the home page's look: the same sky, type and colors. It starts from what
+   gets in your way (Nov 25, 2026, owner): a plain list of everyday struggles, each a link down to
+   its section, all open, with their own skies (night for hard days, dawn for coming back, evening
+   for Plus). Inside, a ruled margin holds the section's
    name, the features are short lines, and the app sits beside them. */
 :root {
   --ink: #2A2018;
@@ -73,29 +75,28 @@ a { color: var(--accent); }
 .skyline svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .skyline .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .22; }
 .skyline .sun { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -75px; border-radius: 50%;
-  background: radial-gradient(circle, #FFF8E2 0 19%, #FFE9B8 22%, rgba(247, 201, 135, .35) 36%, transparent 68%); }
+  background: radial-gradient(circle closest-side, transparent 29.4%, rgba(255, 255, 255, .75) 29.6% 31.2%, transparent 31.4%), radial-gradient(circle closest-side, #FFF8E2 0 9%, #F5B03F 31.3%, transparent 31.5%), radial-gradient(circle closest-side, transparent 31%, rgba(255, 233, 184, .6) 33%, rgba(247, 201, 135, .22) 60%, transparent 92%); }
 
 .intro { padding-block: 34px 10px; }
 .intro h1 { font-family: var(--display); font-weight: 800; font-size: clamp(46px, 7.4vw, 96px); line-height: .95; letter-spacing: -0.035em; margin: 0 0 18px; text-wrap: balance; }
 .intro p { font-size: clamp(18px, 1.6vw, 21px); color: var(--ink2); max-width: 46ch; margin: 0; }
-.jump { list-style: none; padding: 0; margin: 4px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 980px; }
-.jump .folder { font: inherit; text-align: left; cursor: pointer; width: 100%; display: grid; align-content: start; gap: 2px; height: 100%; padding: 12px 14px 13px; border-radius: 14px; background: rgba(101, 88, 80, .08); border: 1px solid rgba(101, 88, 80, .1); transition: background .2s, border-color .2s; }
-.jump .folder:hover { border-color: rgba(212, 105, 47, .35); }
-.jump .folder:focus-visible { outline: 3px solid #2A2018; outline-offset: 2px; }
-.jump .folder[aria-expanded="true"] { background: linear-gradient(180deg, rgba(242, 192, 102, .34), rgba(212, 105, 47, .14)); border-color: rgba(212, 105, 47, .45); }
-.jump b { font-family: var(--display); font-weight: 650; font-size: 17px; color: var(--ink); }
-.jump span { font-size: 14px; line-height: 1.35; color: var(--ink2); }
-.jump .plus .folder:not([aria-expanded="true"]) { background: linear-gradient(135deg, rgba(185, 138, 156, .22), rgba(142, 110, 140, .16)); border-color: rgba(142, 110, 140, .28); }
-.jumpbar { padding-block: 0 8px; }
-/* On a phone the folders are one sideways row of chips that stays at the top while you read. */
+/* What gets in your way (Nov 25, 2026, owner): one plain list of everyday struggles, each a link
+   down to what Soonish does about it. Every section is always open. */
+.struggles { padding-block: 6px 30px; }
+.struggles ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; max-width: 1000px; }
+.struggles li { border-top: 1px solid rgba(101, 88, 80, .2); }
+.struggles li:nth-last-child(-n+2) { border-bottom: 1px solid rgba(101, 88, 80, .2); }
+.struggles a { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; min-height: 44px; padding: 15px 0; text-decoration: none; color: var(--ink); }
+.struggles a:hover b { text-decoration: underline; text-decoration-color: var(--apricot); text-underline-offset: 5px; text-decoration-thickness: 2px; }
+.struggles b { font-family: var(--display); font-weight: 700; font-size: clamp(19px, 1.9vw, 22px); line-height: 1.25; }
+.struggles span { font-size: 15px; color: var(--ink2); white-space: nowrap; }
+.struggles span::after { content: " \2193"; color: var(--accent); }
+.struggles .also b { font-family: var(--text); font-weight: 600; font-size: 17px; color: var(--ink2); }
 @media (max-width: 760px) {
-  .jumpbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--page); padding-block: 8px; box-shadow: 0 8px 14px -12px rgba(60, 35, 15, .35); }
-  .jump { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * max(20px, env(safe-area-inset-right, 0px))) 0 0; padding-right: 20px; }
-  .jump::-webkit-scrollbar { display: none; }
-  .jump li { flex: none; }
-  .jump .folder { padding: 11px 16px; border-radius: 999px; }
-  .jump .folder span { display: none; }
-  .jump .folder b { font-size: 15px; white-space: nowrap; }
+  .struggles ul { grid-template-columns: 1fr; }
+  .struggles li:nth-last-child(2) { border-bottom: 0; }
+  .struggles span { font-size: 0; }
+  .struggles span::after { font-size: 17px; }
 }
 
 /* ---------- Sections: a ruled margin with the section's name ---------- */
@@ -110,6 +111,7 @@ a { color: var(--accent); }
 .feats li:last-child { border-bottom: 1px solid rgba(101, 88, 80, .16); }
 .feats b { color: var(--ink); font-weight: 650; }
 .feats.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
+.footnote { font-size: 14px; line-height: 1.5; color: var(--ink2); margin: 14px 0 0; max-width: 62ch; }
 .feats.two li:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid rgba(101, 88, 80, .16); }
 .tag { display: inline-block; font: 700 12px var(--text); letter-spacing: .02em; padding: 2px 8px; border-radius: 999px; margin-left: 6px; vertical-align: 2px; }
 .tag.plus { background: rgba(212, 105, 47, .14); color: #8A3A12; }
@@ -126,14 +128,13 @@ a { color: var(--accent); }
 .typed { font-family: var(--display); font-weight: 600; font-size: clamp(21px, 2.4vw, 28px); line-height: 1.3; margin: 18px 0 4px; display: grid; gap: 2px; }
 .typed em { font-style: normal; color: #3D6FA8; }
 
-/* One folder open at a time. Each topic brings its own sky. */
+/* Each section brings its own sky. */
 .topics { overflow: hidden; }
-.topics .band[hidden]:not([hidden="until-found"]) { display: none; }
 .band { scroll-margin-top: 10px; }
 
 .sub { margin-top: 44px; grid-column: 2; min-width: 0; }
 @media (max-width: 760px) { .sub { grid-column: auto; } }
-@media print { * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .jumpbar { position: static !important; } .clipbtn { display: none; } }
+@media print { * { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .clipbtn { display: none; } }
 .sub h3 { font-family: var(--display); font-weight: 750; font-size: clamp(24px, 3vw, 34px); letter-spacing: -0.02em; margin: 0 0 8px; }
 .stills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 30px; max-width: 820px; }
 .stills figure { margin: 0; }
@@ -146,6 +147,11 @@ a { color: var(--accent); }
 @media (max-width: 760px) { .stills { grid-template-columns: 1fr; } }
 
 /* Night: hard days */
+/* Dawn after the hard days: coming back. */
+.dawn { background: linear-gradient(180deg, var(--night) 0, #3E2C45 60px, #B9728A 140px, #E39A6A 200px, #F4DDC2 300px, var(--page) 400px, var(--page) 100%); }
+.dawn .sec { padding-block: 210px 64px; }
+.dawn .sec::before { border-color: rgba(122, 46, 16, .22); }
+.dawn .label { color: #7A2E10; }
 .night { color: #F3E8DC; background: radial-gradient(60% 40% at 72% 40%, rgba(255, 238, 205, .14), transparent 70%), linear-gradient(180deg, var(--page) 0, #5A4560 90px, #2A2238 200px, var(--night) 340px, var(--night) 100%); }
 .night .sec { padding-block: 170px 80px; }
 .night .sec::before { border-color: rgba(255, 236, 214, .16); }
@@ -221,54 +227,53 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
   </div>
   <div class="skyline" aria-hidden="true">
     <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
-      <path d="M -10 200 Q 500 -30 1010 200" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-      <path id="trail" fill="none" stroke="#E9A24A" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="ahead" d="M -10 200 Q 500 -30 1010 200" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="trail" fill="none" stroke="#E88C29" stroke-opacity=".95" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
     </svg>
     <div class="sun" id="sun"></div>
     <div class="horizon"></div>
   </div>
   <div class="wrap intro">
     <h1>What Soonish can do.</h1>
-    <p>It starts with one thing a day. Everything below is there when you want it, and tucked away when you don’t.</p>
+    <p>Start with what gets in your way. Each one shows what Soonish does about it.</p>
   </div>
 </div>
 
-<nav class="jumpbar" aria-label="Topics">
+<nav class="struggles" aria-label="What gets in your way">
   <div class="wrap">
-    <ul class="jump">
-      <li><button type="button" class="folder" data-topic="adding" aria-controls="adding" aria-expanded="false"><b>Adding</b><span>Type, paste, say or snap it</span></button></li>
-      <li><button type="button" class="folder" data-topic="picking" aria-controls="picking" aria-expanded="false"><b>Picking</b><span>One thing, picked for you</span></button></li>
-      <li><button type="button" class="folder" data-topic="starting" aria-controls="starting" aria-expanded="false"><b>Starting</b><span>Five minutes, a step at a time</span></button></li>
-      <li><button type="button" class="folder" data-topic="wins" aria-controls="wins" aria-expanded="false"><b>Wins</b><span>Badges, Done and your patterns</span></button></li>
-      <li><button type="button" class="folder" data-topic="hard-days" aria-controls="hard-days" aria-expanded="false"><b>Hard days</b><span>Need a minute, days off</span></button></li>
-      <li><button type="button" class="folder" data-topic="everywhere" aria-controls="everywhere" aria-expanded="false"><b>Everywhere</b><span>Widgets, Siri, Lock Screen</span></button></li>
-      <li><button type="button" class="folder" data-topic="apple-intelligence" aria-controls="apple-intelligence" aria-expanded="false"><b>Apple Intelligence</b><span>Smarter picks, Untangle</span></button></li>
-      <li><button type="button" class="folder" data-topic="your-data" aria-controls="your-data" aria-expanded="false"><b>Your data</b><span>No account, iCloud backup</span></button></li>
-      <li class="plus"><button type="button" class="folder" data-topic="plus" aria-controls="plus" aria-expanded="false"><b>Plus</b><span>Themes, patterns and more</span></button></li>
+    <ul>
+      <li><a href="#head-full"><b>My head is too full.</b><span>Get it out</span></a></li>
+      <li><a href="#where-to-start"><b>I don’t know where to start.</b><span>One thing, picked</span></a></li>
+      <li><a href="#getting-started"><b>I just can’t get started.</b><span>Five minutes</span></a></li>
+      <li><a href="#out-of-sight"><b>Out of sight, out of mind.</b><span>Where you look</span></a></li>
+      <li><a href="#too-much"><b>Some days it’s all too much.</b><span>Need a minute</span></a></li>
+      <li><a href="#falling-off"><b>I fall off, then feel like I failed.</b><span>Streaks that forgive</span></a></li>
+      <li><a href="#wins"><b>I can’t tell if I’m getting anywhere.</b><span>Wins</span></a></li>
+      <li class="also"><a href="#apple-intelligence"><b>Apple Intelligence, your data and Plus</b><span>The rest</span></a></li>
     </ul>
   </div>
 </nav>
 
 <div class="topics" id="topics">
-  <div class="band" id="adding">
+  <div class="band" id="head-full">
     <div class="wrap">
       <section class="sec">
     <div class="label">Adding</div>
     <div class="split">
       <div>
-        <h2>Get it out of your head.</h2>
-        <p class="lead">Type it the way you’d say it. Soonish reads the day, the repeat and the rest, and files it for you.</p>
+        <h2>My head is too full.</h2>
+        <p class="lead">Get it out in seconds. Type it the way you’d say it, and Soonish files it for you.</p>
         <ul class="feats">
           <li><b>One line at a time.</b> Press return and keep going. Each line is a task.</li>
           <li><b>Paste a whole list.</b> From Notes, a message or an email, every line becomes its own task.</li>
-          <li><b>Say it.</b> Tap the mic and talk: “call the dentist, renew my registration, email Sam.” You see the tasks before they’re saved.</li>
+          <li><b>Say it.</b> Tap the mic and talk, rambling and all: “call the dentist, renew my registration, email Sam.” You see the tasks before they’re saved.</li>
           <li><b>Snap a list.</b> Take a photo of a sticky note, a whiteboard or a paper list. Each line is read on your iPhone, and the photo isn’t kept.</li>
           <li><b>A list from a file.</b> Text, Markdown, CSV, rich text or PDF. Items already checked off are left out.</li>
           <li><b>Doubles, spotted.</b> Pasted a list twice? Keep both, or remove the extra in one tap.</li>
           <li><b>From anywhere.</b> Siri, Control Center, the Lock Screen, or a touch and hold on the app icon.</li>
         </ul>
       </div>
-      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/dates.jpg?v=20261122b" aria-label="The Scratchpad: Haircut Tuesday at noon is typed and lands under This month with Tue 12pm in the margin."><source src="clips/dates.mp4?v=20261122b" type="video/mp4"></video><figcaption>Type it. Soonish files it.</figcaption></figure>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/dates.jpg?v=20261126d" aria-label="The Scratchpad: Pay rent friday is typed, the line under it says Added to Tomorrow: Pay rent, for Friday, Nov 27, and Pay rent glows in the Tomorrow folder."><source src="clips/dates.mp4?v=20261126d" type="video/mp4"></video><figcaption>Type it. Soonish files it.</figcaption></figure>
     </div>
     <div class="sub">
       <h3>Dates without planning ahead.</h3>
@@ -286,131 +291,167 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
         <li><b>See the day first.</b> Picking a date shows what’s already in Soonish that day, and your calendar too.</li>
       </ul>
     </div>
-      <p class="nextline"><button type="button" class="next" data-next="picking">Next: Picking →</button></p>
+      <p class="nextline"><a class="next" href="#where-to-start">Next: I don’t know where to start ↓</a></p>
       </section>
     </div>
   </div>
-  <div class="band" id="picking" hidden="until-found">
+  <div class="band" id="where-to-start">
     <div class="wrap">
       <section class="sec">
-    <div class="label">Picking</div>
-    <div>
-      <h2>Stop deciding what to do first.</h2>
-      <ul class="feats two">
-        <li><b>One thing a day.</b> Picked for you each morning, with a short reason like “Due today” or “Quick win.”</li>
-        <li><b>Grow when you’re ready.</b> Once one a day is a habit, Soonish asks if you’d like two, then three. Never more, and you can always go back.</li>
-        <li><b>Important comes first.</b> Mark what matters, and it goes first, right after anything due today.</li>
-        <li><b>Light, medium or heavy.</b> At most one heavy one a day, unless more are due. When two things are due together, you start with the lighter one.</li>
-        <li><b>Swap it, or not today.</b> Don’t like the pick? Trade it, push it to tomorrow, or delete it. Undo is one tap away.</li>
-        <li><b>Keep going.</b> Done with your one? Get one more, as many times as you like.</li>
-      </ul>
-      <div class="phones" style="--n: 3" data-clips>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise.jpg?v=20261122b" aria-label="Today: Call the dentist is checked off, a small light flies up and the sun rises with its rays."><source src="clips/sunrise.mp4?v=20261122b" type="video/mp4"></video><figcaption>Check it off and the sun rises.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/swap.jpg?v=20261122b" aria-label="Today: Call the dentist is swapped for Email Sam about Friday, with Swapped and Undo."><source src="clips/swap.mp4?v=20261122b" type="video/mp4"></video><figcaption>Swap it.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/keep-going.jpg?v=20261122b" aria-label="Keep going is tapped and Up next brings Call the dentist. It's checked off, and Today says One more done. The sun noticed."><source src="clips/keep-going.mp4?v=20261122b" type="video/mp4"></video><figcaption>Or keep going.</figcaption></figure>
-      </div>
-    </div>
-      <p class="nextline"><button type="button" class="next" data-next="starting">Next: Starting →</button></p>
-      </section>
-    </div>
-  </div>
-  <div class="band" id="starting" hidden="until-found">
-    <div class="wrap">
-      <section class="sec">
-    <div class="label">Starting</div>
-    <div>
+      <div class="label">Picking</div>
       <div>
-        <h2>Starting is the hardest part.</h2>
+        <h2>I don’t know where to start.</h2>
+        <p class="lead">So Soonish decides. It picks one thing each morning and tells you why.</p>
+        <ul class="feats two">
+          <li><b>One thing a day.</b> Picked for you each morning, with a short reason like “Due today” or “Quick win.”</li>
+          <li><b>Swap it, or not today.</b> Don’t like the pick? Trade it, push it to tomorrow, or delete it. Undo is one tap away.</li>
+          <li><b>Important comes first.</b> Mark what matters, and it goes first, right after anything due today.</li>
+          <li><b>Light, medium or heavy.</b> At most one heavy one a day, unless more are due. When two things are due together, you start with the lighter one.</li>
+          <li><b>Keep going.</b> Done with your one? Get one more, as many times as you like.</li>
+          <li><b>Grow when you’re ready.</b> Once one a day is a habit, Soonish asks if you’d like two, then three. Never more, and you can always go back.</li>
+        </ul>
+        <div class="phones" style="--n: 3" data-clips>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise.jpg?v=20261126d" aria-label="Today: Call the dentist is checked off, a small light flies up and the sun rises with its rays."><source src="clips/sunrise.mp4?v=20261126d" type="video/mp4"></video><figcaption>Check it off and the sun rises.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/swap.jpg?v=20261126e" aria-label="Today: Call the dentist is swapped for Email Sam about Friday, with Swapped and Undo."><source src="clips/swap.mp4?v=20261126e" type="video/mp4"></video><figcaption>Swap it.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/keep-going.jpg?v=20261126e" aria-label="Call the dentist is checked off and the sun rises. Keep going brings Dentist checkup, it’s checked off, and Today says One more done. The sun noticed. Then Up next brings Call mom."><source src="clips/keep-going.mp4?v=20261126e" type="video/mp4"></video><figcaption>Or keep going.</figcaption></figure>
+      </div>
+      </div>
+      <p class="nextline"><a class="next" href="#getting-started">Next: I just can’t get started ↓</a></p>
+      </section>
+    </div>
+  </div>
+  <div class="band" id="getting-started">
+    <div class="wrap">
+      <section class="sec">
+      <div class="label">Starting</div>
+      <div>
+        <h2>I just can’t get started.</h2>
+        <p class="lead">Make the first step small enough to take.</p>
         <ul class="feats two">
           <li><b>Start for 5 minutes.</b> One tap starts a short timer on your one thing. Stopping early still counts.</li>
           <li><b>Break it down.</b><span class="tag plus">Plus</span> Three tiny first steps for a task that feels too big, on iPhone models with Apple Intelligence. Today shows one step at a time to check off.</li>
           <li><b>Focus mode.</b> 5, 15 or 25 minutes, with a sun crossing a small arc as the time passes, on your Lock Screen and in the Dynamic Island too.</li>
-          <li><b>Gentle nudges.</b> A morning start and a midday check, only about what’s left. They stop the moment you’re done.</li>
-          <li><b>An evening note.</b> Everything you got done today. On a quiet day, it stays quiet.</li>
-        </ul>
-      </div>
-      <div class="phones" style="--n: 2" data-clips>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/focus.jpg?v=20261122b" aria-label="Start for 5 minutes on Call the dentist opens Focus: a sun at the start of its arc and the time counting down from 5 minutes."><source src="clips/focus.mp4?v=20261122b" type="video/mp4"></video><figcaption>Start for 5 minutes.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/break-it-down.jpg?v=20261122b" aria-label="Break it down from Today: Call the dentist becomes three small first steps and one is swapped for another. On Today, each step is checked off in turn until All 3 steps done, then Call the dentist is checked off and the sun rises."><source src="clips/break-it-down.mp4?v=20261122b" type="video/mp4"></video><figcaption>Break it down, then one step at a time.</figcaption></figure>
-      </div>
-    </div>
-      <p class="nextline"><button type="button" class="next" data-next="wins">Next: Wins →</button></p>
-      </section>
-    </div>
-  </div>
-  <div class="band" id="wins" hidden="until-found">
-    <div class="wrap">
-      <section class="sec">
-    <div class="label">Wins</div>
-    <div>
-      <h2>Feel every win.</h2>
-      <ul class="feats two">
-        <li><b>The sun rises.</b> Check off your one thing and a little light flies up into the sun. Finish from a widget or Siri, and it rises when you next open Today.</li>
-        <li><b>Steady and Perfect weeks.</b> Something done every day you’re on earns a Steady week. Days off are skipped, never held against you.</li>
-        <li><b>Badges you keep.</b> Metal pins that catch the light as you tilt your phone, for milestones, focus hours, fresh starts and more, plus a few hidden ones for the curious. Share any of them as a picture.</li>
-        <li><b>Your accomplishments.</b> Every badge is something you did, kept in a sky of constellations. Open one any time to see it again.</li>
-        <li><b>Wins only go up.</b> Everything you’ve done since you started, your last six weeks, and a month of little suns.</li>
-        <li><b>The Done tab.</b> Today from morning to evening, then every day before it, with search, notes, links and files.</li>
-        <li><b>Your patterns.</b><span class="tag plus">Plus</span> After about a week, Soonish notices how you work: when you finish the most, your strongest day, how you come back after a day off. Tap one to see why.</li>
-      </ul>
-      <div class="phones" style="--n: 4" data-clips>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise-badge.jpg?v=20261122b" aria-label="The one thing is checked off, the sun rises, then a Steady week badge arrives with the sun rising behind it."><source src="clips/sunrise-badge.mp4?v=20261122b" type="video/mp4"></video><figcaption>A Steady week.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/shelf.jpg?v=20261123" aria-label="Wins to Your accomplishments: the sun sets into a night sky of constellations. Milestones is tapped, and the 50 things done badge opens while lanterns rise and spell 50."><source src="clips/shelf.mp4?v=20261123" type="video/mp4"></video><figcaption>Your accomplishments.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/progress.jpg?v=20261123" aria-label="Wins: the total counts up from 69 to 78, and this week's bar climbs by nine."><source src="clips/progress.mp4?v=20261123" type="video/mp4"></video><figcaption>Wins only go up.</figcaption></figure>
-        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/patterns.jpg?v=20261122b" aria-label="Your patterns on Wins, then See all your patterns: your longest run, a morning finisher, your best day, A minute helps you, Calls are your thing, and An early start keeps you going, each with its own picture."><source src="clips/patterns.mp4?v=20261122b" type="video/mp4"></video><figcaption>Your patterns, with Plus.</figcaption></figure>
-      </div>
-    </div>
-      <p class="nextline"><button type="button" class="next" data-next="hard-days">Next: Hard days →</button></p>
-      </section>
-    </div>
-  </div>
-  <div class="band night" id="hard-days" hidden="until-found">
-    <div class="wrap">
-      <section class="sec">
-      <div class="label">Hard days</div>
-      <div>
-        <div class="moon" aria-hidden="true"></div>
-        <h2>When it’s all too much.</h2>
-        <ul class="feats two">
-          <li><b>Need a minute.</b> One tap turns the day to night and hides everything else: three slow breaths with the moon over a lake, a 2-minute reset, or a private place to clear your head.</li>
-          <li><b>Take a day off.</b> A beach opens, you pick the day, and a wave washes in. No nudges, and it never breaks a streak. One day or a whole vacation.</li>
-          <li><b>Forgot yesterday?</b> If your week’s badge is on the line, Soonish offers to count yesterday as a day off. Only yesterday.</li>
-          <li><b>Quiet days count too.</b> A day with nothing on your list is simply quiet. Your streak is safe.</li>
-          <li><b>No red number unless you ask for one.</b> No “overdue,” and no “you missed.”</li>
+          <li><b>Focus sounds.</b><span class="tag plus">Plus</span> Soft brown, pink or white noise under any timer, even with your phone locked.</li>
         </ul>
         <div class="phones" style="--n: 2" data-clips>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261123" aria-label="Need a minute: Today fades to night and the moon rises over the water. Three slow breaths: Breathe in, Hold, Breathe out."><source src="clips/need-a-minute.mp4?v=20261123" type="video/mp4"></video><figcaption>Need a minute.</figcaption></figure>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/day-off.jpg?v=20261122b" aria-label="Take a day off: the umbrella opens on a beach and a small wave rolls in. Tomorrow is tapped, a bigger wave washes up to the chair and draws back, and it says Tomorrow's yours."><source src="clips/day-off.mp4?v=20261122b" type="video/mp4"></video><figcaption>Take a day off.</figcaption></figure>
-        </div>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/focus.jpg?v=20261126d" aria-label="Start for 5 minutes on Call the dentist opens Focus: a sun at the start of its arc and the time counting down from 5 minutes."><source src="clips/focus.mp4?v=20261126d" type="video/mp4"></video><figcaption>Start for 5 minutes.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/break-it-down.jpg?v=20261126e" aria-label="Break it down from Today: Call the dentist becomes three small first steps. On Today, each step is checked off with Step done, then Call the dentist is checked off and the sun rises."><source src="clips/break-it-down.mp4?v=20261126e" type="video/mp4"></video><figcaption>Break it down, then one step at a time.</figcaption></figure>
       </div>
-      <p class="nextline"><button type="button" class="next" data-next="everywhere">Next: Everywhere →</button></p>
+      </div>
+      <p class="nextline"><a class="next" href="#out-of-sight">Next: Out of sight, out of mind ↓</a></p>
       </section>
     </div>
   </div>
-  <div class="band" id="everywhere" hidden="until-found">
+  <div class="band" id="out-of-sight">
     <div class="wrap">
       <section class="sec">
-      <div class="label">Everywhere</div>
+      <div class="label">Remembering</div>
       <div>
-        <h2>Out of sight, but not out of mind.</h2>
+        <h2>Out of sight, out of mind.</h2>
+        <p class="lead">Your one thing shows up where you already look, and nudges you gently until it’s done.</p>
         <ul class="feats two">
           <li><b>Home Screen and Lock Screen widgets.</b> Check off your one thing under the same sky and sun, add a task, or start Need a minute, one tap away.</li>
           <li><b>Lock Screen and Dynamic Island.</b><span class="tag plus">Plus</span> Today’s picks live right there, and you can check them off without opening the app.</li>
+          <li><b>Gentle nudges.</b> A morning start and a midday check, only about what’s left. They stop the moment you’re done.</li>
+          <li><b>An evening note.</b> Everything you got done today. On a quiet day, it stays quiet.</li>
+          <li><b>Your calendar on Today.</b> Your events and Apple Reminders sit on the sun’s path, beside your one thing. Both optional.</li>
           <li><b>Control Center and the Action button.</b> Add a task, open Today, take a day off or start Need a minute.</li>
           <li><b>Siri and Shortcuts.</b> “What’s my one thing?”, mark it done or take today off, hands-free.</li>
-          <li><b>Your calendar on Today.</b> Your events and Apple Reminders sit on the sun’s path, beside your one thing. Both optional.</li>
-          <li><b>Light and dark.</b> Soonish follows your iPhone, or you choose. At night, Today’s sky turns deep blue with faint stars.</li>
         </ul>
-      <div class="stills">
-        <figure><img src="images/widget-medium.png?v=20261122b" alt="The Home Screen widget: the morning sky with the sun on its path, Call the dentist with an open circle to check it off, and this week's little suns." loading="lazy"><figcaption>The Home Screen widget.</figcaption></figure>
-        <figure><img src="images/lock-screen.png?v=20261122b" alt="Today on the Lock Screen: the same sky and sun, and Call the dentist to check off." loading="lazy"><figcaption>Today on the Lock Screen, with Plus.</figcaption></figure>
+        <div class="stills">
+        <figure><img src="images/widget-medium.png?v=20261126c" alt="The Home Screen widget: the morning sky with the sun on its path, Call the dentist with an open circle to check it off, and this week's little suns." loading="lazy"><figcaption>The Home Screen widget.</figcaption></figure>
+        <figure><img src="images/lock-screen.png?v=20261126c" alt="Today on the Lock Screen: the same sky and sun, and Call the dentist to check off." loading="lazy"><figcaption>Today on the Lock Screen, with Plus.</figcaption></figure>
       </div>
       </div>
-      <p class="nextline"><button type="button" class="next" data-next="apple-intelligence">Next: Apple Intelligence →</button></p>
+      <p class="nextline"><a class="next" href="#too-much">Next: Some days it’s all too much ↓</a></p>
       </section>
     </div>
   </div>
-  <div class="band" id="apple-intelligence" hidden="until-found">
+  <div class="band night" id="too-much">
+    <div class="wrap">
+      <section class="sec">
+      <div class="label">Hard days</div>
+      <div class="split">
+      <div>
+        <h2>Some days it’s all too much.</h2>
+        <p class="lead">One tap, and the day goes quiet.</p>
+        <ul class="feats">
+          <li><b>Need a minute.</b> One tap turns the day to night and hides everything else: three slow breaths with the moon over a lake, a 2-minute reset, or a private place to clear your head.</li>
+          <li><b>Take a day off.</b> A beach opens, you pick the day, and a wave washes in. No nudges, and nothing picked. One day or a whole vacation.</li>
+          <li><b>No red number unless you ask for one.</b> No “overdue,” and no “you missed.”</li>
+        </ul>
+      </div>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/need-a-minute.jpg?v=20261126e" aria-label="Need a minute: Today’s sun sets, the moon rises over the water, and Three slow breaths begins: Breathe in, Breathe out, with the moonlight shimmering on the lake."><source src="clips/need-a-minute.mp4?v=20261126e" type="video/mp4"></video><figcaption>Need a minute.</figcaption></figure>
+      </div>
+      <p class="nextline"><a class="next" href="#falling-off">Next: I fall off, then feel like I failed ↓</a></p>
+      </section>
+    </div>
+  </div>
+  <div class="band dawn" id="falling-off">
+    <div class="wrap">
+      <section class="sec">
+      <div class="label">Coming back</div>
+      <div class="split">
+      <div>
+        <h2>I fall off, then feel like I failed.</h2>
+        <p class="lead">Soonish never holds a rough day against you.</p>
+        <ul class="feats">
+          <li><b>Days off never break a streak.</b> Vacations and sick days are simply skipped.</li>
+          <li><b>A Steady week asks for very little.</b> Something done each day you’re on. A Perfect week is there when you want more.</li>
+          <li><b>Forgot yesterday?</b> If your week’s badge is on the line, Soonish offers to count yesterday as a day off. Only yesterday.</li>
+          <li><b>Quiet days count too.</b> A day with nothing on your list is simply quiet. Your streak is safe.</li>
+          <li><b>Welcome back.</b> Coming back after a break earns a badge, not a lecture.</li>
+        </ul>
+      </div>
+      <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/day-off.jpg?v=20261126e" aria-label="Take a day off: the umbrella opens on a beach. Today is tapped, a wave washes up, and it says Today’s yours. Today then shows the beach and You’re off today."><source src="clips/day-off.mp4?v=20261126e" type="video/mp4"></video><figcaption>Take a day off.</figcaption></figure>
+      </div>
+      <p class="nextline"><a class="next" href="#wins">Next: I can’t tell if I’m getting anywhere ↓</a></p>
+      </section>
+    </div>
+  </div>
+  <div class="band" id="wins">
+    <div class="wrap">
+      <section class="sec">
+      <div class="label">Wins</div>
+      <div>
+        <h2>I can’t tell if I’m getting anywhere.</h2>
+        <p class="lead">See everything you’ve done. Your wins only go up.</p>
+        <ul class="feats two">
+          <li><b>The sun rises.</b> Check off your one thing and a little light flies up into the sun. Finish from a widget or Siri, and it rises when you next open Today.</li>
+          <li><b>Steady and Perfect weeks.</b> Something done every day you’re on earns a Steady week. Days off are skipped, never held against you.</li>
+          <li><b>Badges you keep.</b> Metal pins that catch the light as you tilt your phone, for milestones, focus hours, fresh starts and more, plus a few hidden ones for the curious.</li>
+          <li><b>Your accomplishments.</b> Every badge is something you did, kept in a sky of constellations. Open one any time to see it again.</li>
+          <li><b>Wins only go up.</b> Everything you’ve done since you started, your last six weeks, and a month of little suns.</li>
+          <li><b>The Done tab.</b> Today from morning to evening, then every day before it, with search, notes, links and files.</li>
+          <li><b>Your patterns.</b><span class="tag plus">Plus</span> After about a week, Soonish notices how you work: when you finish the most, your strongest day, how you come back after a day off. Tap one to see why.</li>
+        </ul>
+        <div class="phones" style="--n: 4" data-clips>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/sunrise-badge.jpg?v=20261126e" aria-label="The one thing is checked off, the sun rises, then a Steady week badge arrives with the sun rising behind it."><source src="clips/sunrise-badge.mp4?v=20261126e" type="video/mp4"></video><figcaption>A Steady week.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/shelf.jpg?v=20261126e" aria-label="Wins to Your accomplishments: the sun sets into a night sky of constellations. Milestones is tapped, and the 50 things done badge opens while lanterns rise and spell 50."><source src="clips/shelf.mp4?v=20261126e" type="video/mp4"></video><figcaption>Your accomplishments.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/progress.jpg?v=20261126d" aria-label="Wins: the total counts up from 69 to 78, and this week's bar climbs by nine."><source src="clips/progress.mp4?v=20261126d" type="video/mp4"></video><figcaption>Wins only go up.</figcaption></figure>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/patterns.jpg?v=20261126e" aria-label="Your patterns on Wins: You’re a morning finisher. See why shows when you finish things, hour by hour, then See all your patterns: your longest run, A minute helps you, and Calls are your thing."><source src="clips/patterns.mp4?v=20261126e" type="video/mp4"></video><figcaption>Your patterns, with Plus.</figcaption></figure>
+      </div>
+      </div>
+      <div class="sub">
+      <div class="split">
+        <div>
+          <h3>Share the win.</h3>
+          <p class="lead">Any badge, in its own scene. It shows the win and when, never your list.</p>
+          <ul class="feats">
+            <li><b>A post or a Story.</b> A picture sized for either, with the badge in the sky it was celebrated in.</li>
+            <li><b>The whole moment.</b> A few seconds of the celebration as a video, for Stories and short videos.</li>
+            <li><b>Copy badge.</b> Just the badge, to paste on a message or a photo.</li>
+            <li><b>Hidden badges stay hidden.</b> Share that you found one, never which.</li>
+          </ul>
+        </div>
+        <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/share.jpg?v=20261126e" aria-label="A Steady week badge is celebrated, then Share opens the share sheet: the badge as a post, then a Story, then Clip, a few seconds of the moment for Stories and short videos."><source src="clips/share.mp4?v=20261126e" type="video/mp4"></video><figcaption>Share it as a post, a Story or a clip.</figcaption></figure>
+      </div>
+    </div>
+      <p class="nextline"><a class="next" href="#apple-intelligence">Next: Apple Intelligence ↓</a></p>
+      </section>
+    </div>
+  </div>
+  <div class="band" id="apple-intelligence">
     <div class="wrap">
       <section class="sec">
       <div class="label">Apple Intelligence</div>
@@ -420,14 +461,14 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
           <li><b>Smarter picks.</b><span class="tag free">Free</span> Soonish gets a better sense of each task, quick or big, and whether it matters even with no deadline, like renewing a passport.</li>
           <li><b>Untangle what you say.</b><span class="tag free">Free</span> Say it all in one go, rambling and all, and Soonish sorts it into separate tasks, dates included.</li>
           <li><b>Break it down.</b><span class="tag plus">Plus</span> Tiny first steps for a task that feels too big, checked off one at a time on Today.</li>
-          <li><b>Right on your iPhone.</b> These work on iPhone 15 Pro or newer and recent iPad models, with Apple Intelligence turned on. Everything stays on your device. And if you’ve set something yourself, like marking a task Important, Soonish goes with your choice.</li>
         </ul>
+        <p class="footnote">On iPhone 15 Pro or newer and recent iPad models, with Apple Intelligence turned on. Everything stays on your device, and anything you set yourself, like marking a task Important, comes first.</p>
       </div>
-      <p class="nextline"><button type="button" class="next" data-next="your-data">Next: Your data →</button></p>
+      <p class="nextline"><a class="next" href="#your-data">Next: Your data ↓</a></p>
       </section>
     </div>
   </div>
-  <div class="band" id="your-data" hidden="until-found">
+  <div class="band" id="your-data">
     <div class="wrap">
       <section class="sec">
       <div class="label">Your data</div>
@@ -439,11 +480,11 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
           <li><b>Private thoughts stay private.</b> What you keep from Need a minute opens with Face ID.</li>
         </ul>
       </div>
-      <p class="nextline"><button type="button" class="next" data-next="plus">Next: Plus →</button></p>
+      <p class="nextline"><a class="next" href="#plus">Next: Soonish Plus ↓</a></p>
       </section>
     </div>
   </div>
-  <div class="band evening" id="plus" hidden="until-found">
+  <div class="band evening" id="plus">
     <div class="wrap">
       <section class="sec">
       <div class="label">Plus</div>
@@ -453,16 +494,16 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
         <h2 style="color:#FFF6EA">Soonish Plus.</h2>
         <p class="lead">Soonish is free, with no limits. Plus is extra, for people who want a little more.</p>
         <ul class="feats">
-          <li><b>Themes and app icons.</b> Twelve more themes: calm colors, clean ones like Ink and Pearl, brushed metals, and bold ones like Aurora or your own photo. Each has its own sky, or just its color if you turn off sky details.</li>
+          <li><b>Themes and app icons.</b> Twelve more themes: calm colors, clean ones like Ink and Pearl, brushed metals and bold ones like Aurora or your own photo. Each has its own sky, or just its color if you turn off sky details.</li>
           <li><b>Break it down.</b> Tiny first steps for a big task, on iPhone models with Apple Intelligence.</li>
           <li><b>Your patterns.</b> When you finish the most, your strongest day, your longest run, and gentle suggestions that fit how you work. Nothing changes unless you say yes.</li>
           <li><b>Today on the Lock Screen.</b> Check off your picks right there, and see them in the Dynamic Island and on your Apple Watch.</li>
           <li><b>StandBy.</b> Your day’s sun and what’s next, while your iPhone charges on its side.</li>
           <li><b>Focus sounds.</b> Soft brown, pink or white noise under any timer, even with your phone locked.</li>
-          <li><b>Add from your Mac.</b> Add to a Soonish list in Reminders on your Mac, iPad or Apple Watch, and it moves into your Scratchpad with its day, time, notes and link. Needs iCloud with Reminders on.</li>
+          <li><b>Add from your Mac.</b> Add to a Soonish list in Reminders on your Mac, iPad or Apple Watch, and it moves into your Scratchpad with its day, time and notes. Put a link in the notes and it comes along too. Needs iCloud with Reminders on.</li>
         </ul>
         </div>
-          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/themes.jpg?v=20261122b" aria-label="Today in nine themes: Sunrise, Sea glass, Dusk, Rosewood, Brick, Denim, Titanium, Aurora, and Your photo with a sandy path through the dunes to the sea."><source src="clips/themes.mp4?v=20261122b" type="video/mp4"></video><figcaption>Themes, each with its own sky.</figcaption></figure>
+          <figure class="phone"><video data-clip muted playsinline preload="none" poster="clips/themes.jpg?v=20261126e" aria-label="Today in different themes, calm and bold, then Your photo with a sandy path through the dunes, where Call the dentist is checked off and the sun rises."><source src="clips/themes.mp4?v=20261126e" type="video/mp4"></video><figcaption>13 themes in all, each with its own sky: calm colors, clean and professional ones, brushed metals and bold ones like your own photo. Prefer just the color? Turn off sky details.</figcaption></figure>
         </div>
       </div>
       </section>
@@ -488,58 +529,9 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
   const t = (9 * 60 + 41 - 360) / 960, P0 = { x: -10, y: 200 }, C = { x: 500, y: -30 }, P1 = { x: 1010, y: 200 };
   const pt = s => { const u = 1 - s; return { x: u*u*P0.x + 2*u*s*C.x + s*s*P1.x, y: u*u*P0.y + 2*u*s*C.y + s*s*P1.y }; };
   const draw = () => { const p = pt(t); sun.style.left = p.x / 1000 * band.clientWidth + 'px'; sun.style.top = p.y / 200 * band.clientHeight + 'px';
-    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } trail.setAttribute('d', d); };
+    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } trail.setAttribute('d', d); { const ah = document.getElementById('ahead'); if (ah) { let a = ''; for (let i = 0; i <= 30; i++) { const q = pt(t + (1 - t) * i / 30); a += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } ah.setAttribute('d', a); } } };
   draw(); addEventListener('resize', draw);
 
-  // Topics work like the Scratchpad's folders: one is open, starting with Adding. Opening
-  // another folds the open one up, then unfolds the new one with its own sky. The browser's
-  // search opens the topic it finds, and a link to #plus opens Plus.
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const folders = [...document.querySelectorAll('.folder')];
-  const topic = id => document.getElementById(id);
-  const HID = 'onbeforematch' in document.body ? 'until-found' : '';
-  if (!HID) document.querySelectorAll('.topics .band[hidden]').forEach(b => b.setAttribute('hidden', ''));
-  let open = 'adding', busy = false;
-  const mark = id => { folders.forEach(f => f.setAttribute('aria-expanded', f.dataset.topic === id)); if (typeof chipIntoView === 'function') chipIntoView(id); };
-  const pause = el => el.querySelectorAll('video').forEach(v => v.pause());
-  const show = (id, animate) => {
-    if (id === open || busy) return;
-    const was = topic(open), next = topic(id);
-    open = id; mark(id);
-    const unfold = () => {
-      next.removeAttribute('hidden');
-      // On a small screen the topic can open below the fold: glide down to it.
-      if (animate && next.getBoundingClientRect().top > innerHeight * .7)
-        setTimeout(() => scrollTo({ top: next.getBoundingClientRect().top + scrollY - 12, behavior: reduce ? 'auto' : 'smooth' }), reduce ? 0 : 120);
-      if (!animate || reduce) { busy = false; return; }
-      const h = next.offsetHeight;
-      next.animate([{ height: '0px', opacity: 0 }, { height: h + 'px', opacity: 1 }], { duration: 380, easing: 'cubic-bezier(.2,.7,.2,1)' });
-      [...next.querySelectorAll('h2, .lead, .feats li, .typed, .phone')].forEach((row, i) =>
-        row.animate([{ opacity: 0, transform: 'translateY(-6px)' }, { opacity: 1, transform: 'none' }], { duration: 220, delay: 40 + Math.min(i, 10) * 30, easing: 'ease-out', fill: 'backwards' }));
-      setTimeout(() => { busy = false; const h = next.querySelector('h2'); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); } }, 380);
-    };
-    pause(was); busy = true;
-    if (!animate || reduce) { was.setAttribute('hidden', HID); return unfold(); }
-    const h = was.offsetHeight;
-    was.animate([{ height: h + 'px', opacity: 1 }, { height: '0px', opacity: 0 }], { duration: 200, easing: 'ease-in' })
-      .finished.then(() => { was.setAttribute('hidden', HID); unfold(); });
-  };
-  folders.forEach(f => f.addEventListener('click', () => show(f.dataset.topic, true)));
-  // Next: at the end of a topic, open the next one and go to its top.
-  document.querySelectorAll('.next').forEach(b => b.addEventListener('click', () => {
-    const id = b.dataset.next; show(id, true);
-    setTimeout(() => { const bar = document.querySelector('.jumpbar'); const pad = getComputedStyle(bar).position === 'sticky' ? bar.offsetHeight : 0;
-      scrollTo({ top: topic(id).getBoundingClientRect().top + scrollY - pad, behavior: reduce ? 'auto' : 'smooth' }); }, 240);
-  }));
-  // On a phone, keep the open chip in view in the row.
-  const chipIntoView = id => { const f = folders.find(f => f.dataset.topic === id), row = f && f.closest('.jump');
-    if (row && row.scrollWidth > row.clientWidth + 4) row.scrollTo({ left: f.getBoundingClientRect().left - row.getBoundingClientRect().left + row.scrollLeft - 4, behavior: reduce ? 'auto' : 'smooth' }); };
-  document.querySelectorAll('.topics .band').forEach(b => b.addEventListener('beforematch', () => {
-    if (open !== b.id) { pause(topic(open)); topic(open).setAttribute('hidden', HID); }
-    open = b.id; mark(b.id);
-  }));
-  const fromHash = () => { const id = location.hash.slice(1); if (folders.some(f => f.dataset.topic === id)) show(id, false); };
-  mark('adding'); fromHash(); addEventListener('hashchange', fromHash);
 
   // Clips (review, Nov 22): each plays once when it comes into view, then rests on its last frame
   // with a button to play it again. A tap on a clip, or its corner button, pauses or plays it. In a
@@ -575,6 +567,10 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .8; }
     };
     vids.forEach(v => {
       v.loop = false; v.removeAttribute('loop'); v.removeAttribute('controls');
+      // Safari drops the still image when a clip starts, before its first frame is ready, and showed
+      // the dark player behind it (owner, Nov 26, 2026: clips flashed black as they started). The
+      // still is the player's background too, so that moment shows the still instead.
+      if (v.poster) { v.style.backgroundImage = 'url("' + v.poster + '")'; v.style.backgroundSize = 'cover'; v.style.backgroundPosition = 'center'; }
       const b = document.createElement('button'); b.type = 'button'; b.className = 'clipbtn';
       v.closest('.phone').appendChild(b); v._btn = b; set(v, 'play');
       const toggle = () => { const g = groupOf(v); g.auto = false; g.i = g.vids.indexOf(v); if (v.paused) start(g, v); else v.pause(); };

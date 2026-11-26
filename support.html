@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="color-scheme" content="light">
+  <meta name="darkreader-lock">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Soonish Support</title>
   <link rel="canonical" href="https://getsoonish.co/support.html">
@@ -70,7 +71,7 @@ a { color: var(--accent); }
 .skyline svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .skyline .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; opacity: .22; }
 .skyline .sun { position: absolute; width: 140px; height: 140px; margin: -70px 0 0 -70px; border-radius: 50%;
-  background: radial-gradient(circle, #FFF8E2 0 19%, #FFE9B8 22%, rgba(247, 201, 135, .35) 36%, transparent 68%); }
+  background: radial-gradient(circle closest-side, transparent 29.4%, rgba(255, 255, 255, .75) 29.6% 31.2%, transparent 31.4%), radial-gradient(circle closest-side, #FFF8E2 0 9%, #F5B03F 31.3%, transparent 31.5%), radial-gradient(circle closest-side, transparent 31%, rgba(255, 233, 184, .6) 33%, rgba(247, 201, 135, .22) 60%, transparent 92%); }
 
 .intro { padding-block: 34px 10px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: end; }
 .intro h1 { font-family: var(--display); font-weight: 800; font-size: clamp(46px, 7.4vw, 92px); line-height: .95; letter-spacing: -0.035em; margin: 0 0 14px; }
@@ -139,8 +140,8 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .85; }
   </div>
   <div class="skyline" aria-hidden="true">
     <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
-      <path d="M -10 200 Q 500 -30 1010 200" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-      <path id="trail" fill="none" stroke="#E9A24A" stroke-opacity=".75" stroke-width="3" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="ahead" d="M -10 200 Q 500 -30 1010 200" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <path id="trail" fill="none" stroke="#E88C29" stroke-opacity=".95" stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
     </svg>
     <div class="sun" id="sun"></div>
     <div class="horizon"></div>
@@ -241,7 +242,7 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .85; }
         <p>They never expire, and days off never cost you one. Find them in Wins: tap one to bring it to the front, and tap it again to see why you earned it.</p>
       </div></details>
       <details><summary><h3>Can I share a badge?</h3></summary><div class="a">
-        <p>Yes. Tap <b>Share</b> when you earn one, or open any badge in Wins and tap Share. It makes a picture of the badge and why you earned it, never your tasks, and you choose where it goes.</p>
+        <p>Yes. Tap <b>Share</b> when you earn one, or open any badge in Wins and tap Share. Pick a post, a Story or a short clip of the badge in its own scene, or copy just the badge. It shows the badge and when you earned it, never your tasks, and you choose where it goes.</p>
       </div></details>
     </div>
   </section>
@@ -272,9 +273,9 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .85; }
           <li>In Soonish, go to <b>Settings → Soonish Plus → Add from your Mac</b> and allow Full Access to Reminders. Soonish makes the Soonish list for you, in iCloud.</li>
           <li>Check the list sits under iCloud in Reminders, not “On My iPhone,” or it won’t reach your Mac.</li>
           <li>On your Mac, add to the Soonish list, or say <q>Hey Siri, add call the dentist to my Soonish list.</q> Your Apple Watch and iPad work too.</li>
-          <li>Open Soonish on your iPhone. Each item lands in your Scratchpad with its day, time, notes and link.</li>
+          <li>Open Soonish on your iPhone. Each item lands in your Scratchpad with its day, time and notes. A link in the notes becomes the task’s link.</li>
         </ol>
-        <p>It’s a one-way inbox: once an item is in Soonish, it’s removed from Reminders. Subtasks, images, flags and tags don’t come across, since Apple doesn’t share them with other apps. If something doesn’t show up, give iCloud a minute, then switch away from Soonish and back.</p>
+        <p>It’s a one-way inbox: once an item is in Soonish, it’s removed from Reminders. Subtasks, images, flags, tags and the URL field don’t come across, since Apple doesn’t share them with other apps, so put a link in the notes instead. If something doesn’t show up, give iCloud a minute, then switch away from Soonish and back.</p>
       </div></details>
     </div>
   </section>
@@ -328,7 +329,7 @@ footer .tm { max-width: 70ch; margin: 10px auto 0; opacity: .85; }
   const t = (9 * 60 + 41 - 360) / 960, P0 = { x: -10, y: 200 }, C = { x: 500, y: -30 }, P1 = { x: 1010, y: 200 };
   const pt = s => { const u = 1 - s; return { x: u*u*P0.x + 2*u*s*C.x + s*s*P1.x, y: u*u*P0.y + 2*u*s*C.y + s*s*P1.y }; };
   const draw = () => { const p = pt(t); sun.style.left = p.x / 1000 * band.clientWidth + 'px'; sun.style.top = p.y / 200 * band.clientHeight + 'px';
-    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } trail.setAttribute('d', d); };
+    let d = ''; for (let i = 0; i <= 30; i++) { const q = pt(t * i / 30); d += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } trail.setAttribute('d', d); { const ah = document.getElementById('ahead'); if (ah) { let a = ''; for (let i = 0; i <= 30; i++) { const q = pt(t + (1 - t) * i / 30); a += (i ? ' L ' : 'M ') + q.x.toFixed(1) + ' ' + q.y.toFixed(1); } ah.setAttribute('d', a); } } };
   draw(); addEventListener('resize', draw);
 
   // A topic tile jumps to its group and opens its first question.
